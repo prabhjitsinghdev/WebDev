@@ -1,0 +1,58 @@
+<!--
+pj92singh
+Test of pulling data from a php file
+
+using $scope and controller to act and
+pull the data
+-->
+<!DOCTYPE html>
+<html>
+<style>
+body{
+  background-color: #ecb3ff;
+}
+table, th , td  {
+
+  border: 5px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #b3c6ff;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+table{
+  margin-top: 50px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="sqlApp" ng-controller="namesCtr">
+
+<table align="center" width="500">
+  <tr><td><p align="center">Pulling data off customers_mysql2.php</p></td></tr>
+</table>
+
+<table align="center" width="500">
+  <th>Customers' Name</th><th>Country</th>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('sqlApp', []);
+app.controller('namesCtr', function($scope, $http) {
+   $http.get("customers_mysql2.php")
+   .then(function (response) {$scope.names = response.data.records;});
+});
+</script>
+
+</body>
+</html>
