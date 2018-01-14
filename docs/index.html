@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<!--
+Latest Update:
+
+Changed 10/23/2017
+-changed min/max-width
+of first_para & second_para
+tables
+
+Changed 10/12/2017
+-android pictures order
+-new pics uploaded
+
+updated 09/16/2017
+      -changed font size and family
+      -open myNva links in new tab
+-->
+
+<head><title>Welcome</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Times', sans-serif;
+
+
+}
+
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: #33adff;
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #110033;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+
+<!-- style for the top menu of the website CSS -->
+
+<style>
+
+ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #33adff;
+}
+
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #999999;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #33adff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: #FFF;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #999999}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
+
+<!-- start of the paralax CSS -->
+<style>
+body, html {
+   height: 100%;
+
+}
+/*first paragraph table */
+#first_para{
+  min-width: 350px;
+  max-width: 750px;
+}
+/* second paragraph table */
+#second_para{
+  min-width: 350px;
+  max-width: 750px;
+}
+
+.parallax {
+   /* The image used */
+   background-image: url("Img/codebackground.jpg");
+
+   /* Full height
+   height: 100%;
+   */
+   height: 50%;
+
+   /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.parallax2 {
+   /* The image used */
+   background-image: url("Img/codebackground.jpg");
+
+   /* Full height
+   height: 100%;
+   */
+   height: 90%;
+
+   /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.bgimg-3 {
+ background-image: url("Img/3rdimg_me.jpg");
+ min-height: 400px;
+  background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+
+p{
+ /* font-family: "Times New Roman", Times, serif; */
+ font-family: "Georgia", serif;
+ background-color: #33adff;
+ color: #FFF;
+ font-size: 20px;
+}
+.intro_par table{
+ background-color: #33adff;
+}
+
+/* intro style */
+
+.intro{
+   background: rgba(255,255,255,0.5);
+
+
+}
+/*Caption */
+
+.caption {
+ position: absolute;
+ left: 0;
+ top: 30%;
+ width: 100%;
+ text-align: center;
+ color: #000;
+}
+
+.caption span.border {
+ background-color: #fff;
+ color: #33adff;
+ padding: 18px;
+ font-size: 30px;
+ letter-spacing: 10px;
+}
+
+/* intro paragraph formatting */
+.intro_par.p{
+ background-color: #fff;
+ color: #000;
+
+}
+h3{
+ background-color: #999999;
+ color: #FFF;
+ font-size: 28px;
+}
+h3:hover{
+ background-color: #999999;
+}
+
+</style>
+<!-- slideshow animation css -->
+
+<style>
+* {box-sizing:border-box}
+body {font-family: Times,sans-serif;margin:0}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 350px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 20px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+<!-- end of slideshow animation -->
+<!-- end of the paralax -->
+
+
+<!-- scroll button style -->
+<style>
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 30px; /* Place the button at the bottom of the page */
+    right: 40px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #555; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 30px; /* Some padding */
+    border-radius: 100px; /* Rounded corners */
+    font-size: 30px;
+}
+
+#myBtn:hover {
+    background-color:  #33adff; /* Add a dark-grey background on hover */
+}
+</style>
+<!-- end of scroll button style -->
+</head>
+<body>
+  <div class="menu">
+  <ul>
+    <li><a class="active" href="index.html">Home</a></li>
+    <li style="float:right"><a onclick="openNav()">Contact</a></li>
+    <li class="dropdown"><a href="tabbedprojects.html" class="dropbtn">Projects</a>
+    <!--  <div class="dropdown-content">
+        <a href="jav.html">Java</a>
+          <a href="struct.html">Data-Structure</a> -->
+      <!--  <a href="other.html">Database</a> -->
+      <!--  <a href="and.html">Android</a>
+      </div> -->
+    </li>
+
+  </ul>
+  </div>
+
+<!--- Caption -->
+
+<div class="bgimg-1">
+  <div class="caption">
+    <span class="border">Welcome!</span>
+  </div>
+</div>
+
+
+<!-- page content -->
+
+
+<div class="parallax"></div>
+
+
+<div style="height:800px;background-color:#33adff;font-size:20px">
+
+ <table align="center" width="300">
+                  <tr>
+
+                    <div class="slideshow-container">
+
+                      <div class="mySlides fade">
+                        <div class="numbertext">1 / 7</div>
+                        <img src="Img/img4.jpg" style="width:100%">
+                        <div class="text">Prabhjit Singh (Me)</div>
+                      </div>
+
+                    <div class="mySlides fade">
+                      <div class="numbertext">2 / 7</div>
+                      <img src="Img/s11.png" style="width:100%">
+                      <div class="text">Android timer app</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                      <div class="numbertext">3 / 7</div>
+                      <img src="Img/s22.png" style="width:100%">
+                      <div class="text">Location App</div>
+                    </div>
+
+                     <div class="mySlides fade">
+                      <div class="numbertext">4 / 7</div>
+                      <img src="Img/s20.png" style="width:100%">
+                      <div class="text">Android Weather App</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                      <div class="numbertext">5 / 7</div>
+                      <img src="Img/s2.png" style="width:100%">
+                      <div class="text">Android Token Game App</div>
+                    </div>
+
+
+                    <div class="mySlides fade">
+                      <div class="numbertext">6 / 7</div>
+                      <img src="Img/javafx1.png" style="width:100%">
+                      <div class="text">Javafx</div>
+                    </div>
+                    <div class="mySlides fade">
+                      <div class="numbertext">7 / 7</div>
+                      <img src="Img/img2.jpeg" style="width:100%">
+                      <div class="text">Coding</div>
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)"><❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯></a>
+
+                    </div>
+                    <br>
+
+                    <div style="text-align:center;">
+                      <span class="dot" onclick="currentSlide(1)"></span>
+                      <span class="dot" onclick="currentSlide(2)"></span>
+                      <span class="dot" onclick="currentSlide(3)"></span>
+                      <span class="dot" onclick="currentSlide(4)"></span>
+                      <span class="dot" onclick="currentSlide(5)"></span>
+                      <span class="dot" onclick="currentSlide(6)"></span>
+                      <span class="dot" onclick="currentSlide(7)"></span>
+                    </div>
+
+                    <script>
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                      showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                      showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                      var i;
+                      var slides = document.getElementsByClassName("mySlides");
+                      var dots = document.getElementsByClassName("dot");
+                      if (n > slides.length) {slideIndex = 1}
+                      if (n < 1) {slideIndex = slides.length}
+                      for (i = 0; i < slides.length; i++) {
+                          slides[i].style.display = "none";
+                      }
+                      for (i = 0; i < dots.length; i++) {
+                          dots[i].className = dots[i].className.replace(" active", "");
+                      }
+                      slides[slideIndex-1].style.display = "block";
+                      dots[slideIndex-1].className += " active";
+                    }
+                    </script>
+                    </td>
+                  </tr>
+                  <hr>
+                </tabLe>
+
+
+
+ <!-- rest of the content -->
+ <!--<div class="parallax"></div> -->
+<div class="intro_par"/>
+<div style="background-color:#33adff;font-size:20px">
+<table id="first_para" align="center" width="relative">
+<tr>
+  <td align="center" colspan="2">
+    <h3 style="text-align:center;">Welcome to my website!</h3>
+    <p>My name is Prabhjit Singh and this is my reference website. <br> It was created to give a taste of my website management skills and as a side project to test and build upon everything I have learned throughout my Computer Science degree.<br><br> I hope you enjoy the flow and browsing through it as much as I enjoyed making it!
+<br>Thank you!
+        <hr>
+      </p>
+    </td>
+</tr>
+</table>
+
+
+</div>
+</div>
+
+
+
+
+
+<!-- where the slide show was -->
+
+<div class="bgimg-3">
+</div>
+
+<!-- /01/23/2017/ change table width to relative -->
+<div class="intro_par2"/>
+<div style="background-color:#33adff;font-size:20px:top:30%;">
+<table id="second_para" align="center" width="relative">
+<tr>
+<th align="center" colspan="4"><h3 style="text-align:center;">A little about me..</h3>
+</th>
+</tr>
+<tr>
+  <td style="text-align:center;padding:10px;" width="25%">
+  <p> Recent graduate of BCS Computer Science from School of Computer Science at the University of Windsor. But previously I have studied Biology and have a Bachelors of Science in General Science/Biology also at University of Windsor. But previously I have studied Biology and have a Bachelors of Science in General Science/Biology also at University of Windsor. <br>
+<!--
+</td>
+<td style="text-align:center;padding:10px;" width="25%"><p> -->
+I was always interested in computer programming, I took a few classes back in high school in which we learned python and built simple programs. One of our projects was to control led lights and make a 2 way traffic light system and from then on I always had some interest in programming.<br></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding:10px;" width="25%"><p>
+I took some classes at the University for web design which made me even more curious about programming. After taking such classes throughout my BSc years, they helped opened my mind to programming and allowed me to tackle other languages which I was first hesitant of learning. Therefore I took some online courses on my own time to learn javascript and to learn some other languages. <br>
+
+<!--<td style="text-align:center;padding:10px;" width="25%"><p> -->
+By this time I had graduated from by BSc in Biology I wanted to learn more programming, so I decided to come back to school and major in Computer Science! Now I am finishing up my second degree and enjoy learning different aspects of code, computer architecture, network systems, Object-oriented design and even machine code(MASM). I have enjoyed learning all of these aspects of computer programming and continue to learn about other programming fields such as android development. Overall I have learned languages from C/C++, Java(Swing/fx), Javascript, jQuery, JSON, XML/PHP etc.
+    </p>
+  </td>
+</tr>
+</table>
+
+</div>
+</div>
+
+
+<div class="parallax2"></div>
+
+<!-- copyright section-->
+<div class="intro_par2"/>
+
+<div style="background-color:#33adff;font-size:20px:top:30%;">
+<table align="center" width="relative">
+  <td style="text-align:center;padding:10px;" width="25%">
+  <p> Copyright © Prabhjit Singh</p>
+</td>
+</tr>
+</table>
+
+</div>
+
+
+<!-- Scroll button -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<!-- When the user scrolls down 300px from the top of the document, show the button -->
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}
+</script>
+<!-- end of scroll button -->
+<!-- div my nav-->
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="mailto:singh13x@uwindsor.ca" target="_blank">Email</a>
+    <a href="https://ca.linkedin.com/in/prabhjit-singh-36b819a2" target="_blank">LinkedIn</a>
+    <a href="https://github.com/pj92singh/" target="_blank">Github</a>
+  </div>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+</script>
+
+</body>
+</html>
