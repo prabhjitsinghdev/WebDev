@@ -1,9 +1,7 @@
 # WebDev
 Javascript, Angular, php AJAX principles etc.
 Code used in web projects such as:
-
 Porfolio - http://singh13x.myweb.cs.uwindsor.ca/intro.html
-
 ShoppingWeb - http://singh13x.myweb.cs.uwindsor.ca/shop2.php
 
 
