@@ -7,7 +7,7 @@ Javascript, Angular, php AJAX principles etc.
 
 ~~Porfolio - http://singh13x.myweb.cs.uwindsor.ca/intro.html~~
 
-~~ShoppingWeb - http://singh13x.myweb.cs.uwindsor.ca/shop2.php ~~ 
+~~ShoppingWeb - http://singh13x.myweb.cs.uwindsor.ca/shop2.php~~
 
 **Updated webpages will come through GitHub pages at:**
 https://pj92singh.github.io/WebDev/
