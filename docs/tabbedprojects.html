@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+Latest update:
+
+Changed 10/18/2017
+-change android info with more 
+updated apps
+-more pics 
+
+Changed 10/12/2017
+-android pictures order
+-new pics uploaded
+
+Changed 09/16/2017
+-open myNav Links in new tab
+-change font size/family
+-background size
+
+
+Changed 09//07/2017 
+pics to Img/ folder
+and fixed coursel1 func
+
+
+Change pictures 07/04/2017
+
+Making links open in new tab
+07/03/2017
+
+new projects page
+updated 06/22/2017
+ -->
+<html>
+
+<!-- overlay/contact css -->
+<style>
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: #ff944d;
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #110033;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+p{
+     font-family: "Georgia", serif;
+     font-size: 16px; 
+}
+
+*h1{
+   font-family: "Georgia", serif;
+   font-size: 30px; 
+}
+</style>
+
+<!-- end of overlay/contact css -->
+<head>
+  <title>Projects</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative;
+  }
+  #section1 {padding-top:50px;height:relative;color: #fff; background-color: #66ccff;}
+  #section2 {padding-top:50px;height:relative;color: #fff; background-color: #00b33c;}
+  #section3 {padding-top:50px;height:relative;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:relative;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:relative;color: #fff; background-color: #ff3300;}
+  /*
+  #section1 {padding-top:50px;height:965px;color: #fff; background-color: #66ccff;}
+  #section2 {padding-top:50px;height:610px;color: #fff; background-color: #00b33c;}
+  #section3 {padding-top:50px;height:710px;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:280px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:260px;color: #fff; background-color: #ff3300;}
+  */
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="tabbedprojects.html">Projects</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Php/Admin</a></li>
+          <li><a href="#section2">Java</a></li>
+          <li><a href="#section3">Android</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Data Structures <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#section41">C</a></li>
+              <li><a href="#section42">C++</a></li>
+            </ul>
+          </li>
+          <li><a onclick="openNav()">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="section1" class="container-fluid">
+  <h1>Php/Admin-mySQL/Angular/jQuery</h1>
+  <p>This secondary website was made as a final project for a class.<br> It allows an Administrator to login and change the prices of the items and update the stock.<br>
+  About page is based off AngularJs and seraching through employees,<br>
+  and getting their emails and position in the company.<br>
+Also allows users to buy the items and gives them a receipt of the order,
+<br>
+for the Administrator use the login username: singh
+<br>
+and password: 1234
+</p>
+  <p>Website link: <a href="http://singh13x.myweb.cs.uwindsor.ca/shop2.php" target="_blank">CMP Products</a></p>
+  <br>
+  <p>This next website is a group project which is a forum/social website.<br> It allows users to login and upload pictures and talk on a forum about their trips.<br>
+  (worked on as a 3 member team and is based off of CSS/PHP/Javascript/XML and a databse for the users<br>
+  and all their information using psql)</p>
+  <p>Website link: <a href="http://334.maghniem.myweb.cs.uwindsor.ca" target="_blank">Windsor Mania</a></p>
+<br>
+  <p>This next website is a small audio player with a playlist.<br> It allows the user to simply play through the playlist of song.<br>
+  (worked on as a base for a bigger website using CSS/HTML5/Javascript/jQuery.
+  </p>
+  <p>Website link: <a href="http://singh13x.myweb.cs.uwindsor.ca/myaudio.html" target="_blank">Audio Player</a></p>
+</div>
+<div id="section2" class="container-fluid">
+  <h1>Java/JavaSwing/Javafx</h1>
+  <p>Here is a link to my Java projects off of<a href="https://github.com/pj92singh/JavaProjects.git" target="_blank">Java-Github</a><br> Feel free to look over my projects and extra curricular work!<br> It contains works relating normal java applications, to swing/GUI applications and javafx applications!<br> There are runnable JAR files and source code files.</p>
+    <td align="center" colspan="2">
+<div class="w3-content w3-section" style="max-width:500px">
+  <div style="width:350px:height:550px;background-color:#00b33c;font-size:20px;">
+  <!--<img class="mySlides" src="layout2.png" style="width:50%" align="center"> removing this picture for now -->
+  <img class="mySlidesjava" src="Img/javafx1.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/javafx2.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java1.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java2.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java3.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java4.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java5.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java6.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java7.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java8.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java9.png" style="width:100%">
+  <img class="mySlidesjava" src="Img/java10.png" style="width:100%">
+</div>
+</td>
+</tr>
+
+</table>
+<script>
+var myIndex1 = 0;
+carousel1();
+
+function carousel1() {
+    var j;
+    var z = document.getElementsByClassName("mySlidesjava");
+    for (j = 0; j < z.length; j++) {
+       z[j].style.display = "none";
+    }
+    myIndex1++;
+    if (myIndex1 > z.length) {myIndex1 = 1}
+    z[myIndex1-1].style.display = "block";
+    setTimeout(carousel1, 2000); // Change image every 2 seconds
+}
+</script>
+</div>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Android</h1>
+  <p> Here is a link to my android app development page<a href="https://github.com/pj92singh/Android_dev-.git" target="_blank">Android-Github</a>, Other apk's will be added over time.<br> Using Android studio and OOAD programming style/Threads (Async Task)/SQLite, Manipulating JSON data,<br> using external API's to build apps such as Weather updates, Notes app, GPS hiker’s app, Language learning app, Timer app, Brain question game etc.  
+ </p>
+ <br>
+
+        <td align="center" colspan="2">
+<div class="w3-content w3-section1" style="max-width:500px">
+  <div style="width:350px:height:550px;background-color:#ff944d;font-size:20px;">
+  <!--<img class="mySlides" src="layout2.png" style="width:50%" align="center"> removing this picture for now -->
+    <img class="mySlidesand" src="Img/s1.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s21.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s22.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s20.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s10.png" style="width:50%">
+	  <img class="mySlidesand" src="Img/s23.png" style="width:50%">
+	  <img class="mySlidesand" src="Img/s24.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s2.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s3.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s4.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s5.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s11.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s12.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s13.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s14.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s17.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s18.png" style="width:50%">
+      <img class="mySlidesand" src="Img/s19.png" style="width:50%">
+     
+</div>
+</td>
+</tr>
+
+</table>
+</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlidesand");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+</div>
+</div>
+<div id="section41" class="container-fluid">
+  <h1>Data Structures C</h1>
+   <p>Data structures and algorithms work done in C is available <a href="https://github.com/pj92singh/Data-Structures-.git" target="_blank">C-Github</a>, It ranges from dynamic programming/recursive programming.<br>Pthread/process manager, array and other structure manipulation,sorting and searching algorithms etc.<br>
+  Other code will be uploaded in time.</p>
+</div>
+<div id="section42" class="container-fluid">
+  <h1>Data Structures C++</h1>
+  <p>Data structures and algorithms work done in C++ <a href="https://github.com/pj92singh/Cpp.git" target="_blank">C++-Github</a><br>, It has heap, sorting algorithm etc.<br>
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- div my nav-->
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="mailto:singh13x@uwindsor.ca" target="_blank">Email</a>
+    <a href="https://ca.linkedin.com/in/prabhjit-singh-36b819a2" target="_blank">LinkedIn</a>
+    <a href="https://github.com/pj92singh/" target="_blank">Github</a>
+  </div>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+</script>
+
+
+
+</body>
+</html>
