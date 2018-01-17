@@ -122,7 +122,7 @@ p{
   */
   </style>
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="myLoadFunction()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -153,7 +153,12 @@ p{
     </div>
   </div>
 </nav>
-
+	
+<script>
+function myLoadFunction() {
+    alert("External web pages won't load, please wait for pages to be moved to new server!");
+}
+</script>
 <div id="section1" class="container-fluid">
   <h1>Php/Admin-mySQL/Angular/jQuery</h1>
   <p>This website was made as a final project for a class.<br> In its front end, allows users to browse and purchase products.<br>
@@ -169,15 +174,15 @@ and password: 1234
 </p>
   <s><p>Website link:~~<a href="http://singh13x.myweb.cs.uwindsor.ca/shop2.php" target="_blank">CMP Products</a></p></s>
   <br>
-  <p>This next website is a group project which is a forum/social website.<br> It allows users to login and upload pictures and talk on a forum about their trips.<br>
-  (worked on as a 3 member team and is based off of CSS/PHP/Javascript/XML and a database for the users<br>
-  and all their information using psql)</p>
-  <p>Website link: <a href="http://334.maghniem.myweb.cs.uwindsor.ca" target="_blank">Windsor Mania</a></p>
+  <p>This next website is a group project which is a forum/social website.<br> It allows users to login, upload pictures and talk on a forum about their trips.<br>
+  (worked on as a 3 member team and most of the frined end is based off of PHP/HTML, modified with CSS/XML<br>
+	  and the back end is also PHP/Javascript with a pSQLdatabase for the storing users' info and pictuers.</p>
+  <s><p>Website link: <a href="http://334.maghniem.myweb.cs.uwindsor.ca" target="_blank">Windsor Mania</a></p></s>
 <br>
-  <p>This next website is a small audio player with a playlist.<br> It allows the user to simply play through the playlist of song.<br>
+  <p>Audio player webpage with a playlist.<br> It allows the user to scroll and play through the playlist of song.<br>
   (worked on as a base for a bigger website using CSS/HTML5/Javascript/jQuery.
   </p>
-  <p>Website link: <a href="http://singh13x.myweb.cs.uwindsor.ca/myaudio.html" target="_blank">Audio Player</a></p>
+  <s><p>Website link: <a href="http://singh13x.myweb.cs.uwindsor.ca/myaudio.html" target="_blank">Audio Player</a></p></s>
 </div>
 <div id="section2" class="container-fluid">
   <h1>Java/JavaSwing/Javafx</h1>
