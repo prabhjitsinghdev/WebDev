@@ -1,0 +1,86 @@
+<!DOCTYPEhtml>
+<!-- Audio player
+-with a scrollable playlist
+-prgoressbar that can be clicked on,
+ to change positon of the song
+-based off https://github.com/bradtraversy/html5audioplayer
+
+
+pj92singh
+Prabhjit Singh
+-->
+<html>
+<head><title>Audio Player</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+  <div id="container">
+    <div id="audio-img">
+      <img class="cover"/>
+    </div>
+    <div id="audio-player">
+      <div id="audio-info">
+        <span class="artist"></span> - <span class="title"></span>
+      </div>
+      <hr>
+      <div id="vLabel">
+      <p>Volume</p>
+      </div>
+      <!--
+      <div id="vol-img">
+          <img src="images/volume.png" height="30" width="30"/>
+        </div>
+      -->
+      <td><input id="volume" type="range" min="0" max="10" value="5"/>
+
+      <br>
+      <div id="audio-buttons">
+        <span>
+          <button id="prev"></button>
+          <button id="play"></button>
+          <button id="pause"></button>
+          <button id="stop"></button>
+          <button id="next"></button>
+          </span>
+      </div>
+    <!--  <div class="clearfix"></div> -->
+      <div id="tracker">
+          <div id="progressbar">
+              <span id="progress"></span>
+          </div>
+          <span id="duration"></span>
+      </div>
+      <div class="clearfix"></div>
+
+      <ul id="playlist" class="hidden">
+        <li song="Mr.PBH.mp3" cover="pjcartoon.bmp" artist="PJ" length="0:01">MBPH Jingle (0:01)</li>
+
+        <li song="HOGAYA-UNFORGETTABLE.mp3" cover="pjcartoon.bmp" artist="Dj Frenzy" length="3:28">Hogaya-unforgettable (3:28)</li>
+
+        <li song="Actin_Up-Wale_Meek_Mill_ft_French_Montana_Instrumental.mp3" cover="cover.jpg" artist="MeekMill" length="4:09">Acting Instrumental (4:09)</li>
+
+        <li song="MeekMill-Monster_Instrumental.mp3" cover="cover.jpg" artist="MeekMill" length="2:49">Monster Instrumental (2:49)</li>
+
+      </ul>
+
+    </div>
+</div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+<script src="js/jquery1.js"></script>
+<script src="js/main.js"></script>
+
+
+<!--footer--> 
+<div id="footer">
+
+  <!--<td style="text-align:center;padding:10px;" width="25%"> -->
+  <p>Copyright © Prabhjit Singh 2018</p>
+
+
+</div>
+
+</body>
+</html>

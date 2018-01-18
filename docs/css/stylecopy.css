@@ -1,0 +1,243 @@
+style.css
+
+<style>
+
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+hr{
+  height: 13px;
+  background-color: #f2f2f2;
+}
+body{
+  font-family: "Times New Roman", sans-serif;
+  font-size: 18px;
+  color: #000;
+  line-height: 1.5em;
+  color: #FFFFFF;
+  background: #000;
+  /*background: url(../images/paperspurple.jpg) */ no-repeat;
+
+}
+.clearfix{
+  clear: both;
+}
+#container{
+  width: 1000px;
+  mind-height: 500px;
+  background:  #ffffff;
+  /*background: #333;*/
+  overflow: auto;
+  margin: 60px auto;
+  border: #666 solid 2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius:10px;
+  border-radius: 10px;
+
+}
+#audio-img{
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 35px;
+
+}
+.cover{
+  width: 100%;
+  z-index: 1;
+}
+
+#audio-info{
+  text-align: center;
+  color: #000;
+  font-size: 22px;
+
+
+
+}
+#audio-info .artist{
+  font-weight: bold;
+  color: #000;
+}
+
+input#volume{
+  width: 25%;
+  -webkit-appearance: none !important;
+  margin-left: 377px;
+  background: #ccc;
+  height: 1px;
+  margin-bottom: 20px;
+  margin-top: 1px;
+
+
+}
+#vLabel{
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+/*  margin-left: 270px; */
+  margin-bottom: 1px;
+}
+
+#vol-img{
+  margin-left: 115px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+
+input#volume::-webkit-slider-thumb{
+    -webkit-appearance: none !important;
+    background: url(../images/knob.png) no-repeat;
+    height: 12px;
+    width: 12px;
+}
+
+#audio-buttons{
+  width: 100%;
+  display: block;
+  margin: 20px auto;
+  margin-left: 325px;
+  overflow: auto;
+
+}
+
+button#play{
+  width: 70px;
+  height: 68px;
+  border-radius: 60%;
+  background:  url(../images/play4.png) no-repeat;
+  float: left;
+}
+button#pause{
+  width: 70px;
+  height: 68px;
+ border-radius: 60%;
+  background:  url(../images/pause4.png) no-repeat;
+  float: left;
+}
+button#stop{
+  width: 70px;
+  height: 68px;
+  border-radius: 60%;
+  background:  url(../images/stop4.png) no-repeat;
+  float: left;
+}
+button#prev{
+  width: 70px;
+  height: 68px;
+  border-radius: 60%;
+  background:  url(../images/prev4.png) no-repeat;
+  float: left;
+  /*margin-top: 15px;*/
+}
+button#next{
+  width: 70px;
+  height: 68px;
+  border-radius: 60%;
+  background:  url(../images/next4.png) no-repeat;
+  float: left;
+ /* margin-top: 15px;*/
+}
+
+#playlist table{
+  list-style: none;
+  padding: 10px;
+  background: #FFF;
+  height: 80px;
+  overflow-y: scroll;
+}
+
+#playlist td{
+  cursor:  pointer;
+  /*margin: 2px; */
+  color: #b3b3b3;
+  border-top: solid 1px #404040;
+  /*rgba(255,0,0,.3); */
+
+
+
+}
+/*
+#playlist .length{
+  font-weight: bold;
+  color: #FFF;
+  padding-left:5em
+}
+*/
+#playlist td.active{
+  font-weight: bold;
+  padding: 3px;
+  color: #000;
+  background:  #f2f2f2;
+  /*background: #666;*/
+  cursor:  pointer;
+  /*margin: 1px; */
+
+}
+#playlist hr{
+  height: 1px;
+  background: #404040;
+}
+
+#progressbar{
+  width: 88%;
+  margin-left: 70px;
+  margin-bottom:20px;
+  margin-top: 12px;
+  height: 8px;
+  background: url(../images/start2.jpg) no-repeat;
+  float: left;
+}
+/* numbers table*/
+
+
+
+#progress{
+  background: url(../images/end2.jpg) no-repeat;
+  height: 9px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+#duration{
+  position: absolute;
+  top: 0;
+  right: 140px;
+  margin-right: 800px;
+  padding: 4px 8px;
+  background: #f2f2f2;
+  -moz-border-radius: 5px;
+  -webkit-border-radius:5px;
+  border-radius: 5px;
+  color: #000;
+
+}
+
+#tracker{
+  position: relative;
+  width: 100%;
+}
+
+
+#footer{
+  position: relative;
+  background-color: #FFF;
+
+  height: 50px;
+
+}
+
+#footer p{
+  text-align: center;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 18px;
+  color: #000;
+}
+</style>
