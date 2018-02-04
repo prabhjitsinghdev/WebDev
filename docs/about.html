@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- CMP products info page-->
+<html>
+<head><title>Search Employees</title>
+<style type="text/css">
+body{
+    background-image: url("theme2.jpg"); 
+    height: 50%;
+
+   /* Create the parallax scrolling effect */
+   
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover; 
+
+}
+table{
+    /*background-color: #000000; 
+    background-image: url("Images/android backgorund.png"); */ 
+       background-position: center;
+          background-repeat: no-repeat;
+    margin-top: 80px; 
+    opacity: 0.9;
+
+}
+th{
+    background-color: #3366ff; 
+    font-size: 30px; 
+    color: #FFFFFF; 
+
+}
+td{
+    background-color: #e6e6e6;
+    font-size: 22px; 
+    font-family: "Times New Roman", Times, serif;
+}
+p{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 22px; 
+    padding: 10px; 
+}
+
+li.ang {
+    margin: 5px; 
+}
+
+</style>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ff6600;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #ffe0cc;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: #ff6600;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="cmp.html">Home</a></li>
+ <li><a href="shop2.php">Shop</a></li>
+  <li style="float:right"><a href="signin.html">SignIn</a></li>
+  <li style="float:right"><a href="about.html">About</a></li>
+  <li class="dropdown">
+    <a href="#" class="dropbtn">Products</a>
+    <div class="dropdown-content">
+      <a href="#">Viron Smartphone</a>
+      <a href="#">VironTab</a>
+      <a href="#">VironBook</a>
+    </div>
+  </li>
+</ul>
+
+<br>
+
+
+<!-- menu --> 
+
+<table align="center" width="700">
+    <tr><th colspan="2">Employee Search!</th></tr>
+<tr><td colspan="2">
+<div class="Ang" ng-app="myApp" ng-controller="namesCtrl">
+<p>Type a letter in the input field to find the employee (The list will change accordingly!)</p>
+<p><input type="text" ng-model="test"></p>
+
+
+<ol>
+  <li ng-repeat="x in names | orderBy:'position' | filter:test">
+    {{ x.name + ', ' + x.position + ', ' + x.email }} 
+  </li>
+</ol>
+
+<!--
+<ul>
+  <li ng-repeat="x in names | filter:test">
+    {{ x }}
+  </li>
+</ul>
+--> 
+</div>
+</td>
+</tr> 
+</table> 
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {name:'Prabhjit Singh',position:'CEO',email:'pj@example.com'},
+        {name:'Joe',position:'CTO',email: 'joe1234@ex.com'},
+        {name:'Janet',position:'Head of Sales',email:'JanetSales@ex.com'},
+        {name:'Carl',position:'Project Manager',email:'CarlMAn@ex.com'},
+        {name:'Margareth',position:'Distribution Manager',email:'Marge_man@ex.com'},
+        {name:'Sanjiv',position:'Platform engineer',email:'San_engi@ex.com'},
+        {name:'Moe',position:'Software Developer',email:'Moe340@ex.com'},
+        {name:'Ali',position:'Jr. Developer',email:'AliDev@ex.com'},
+        {name:'Kai',position:'Sales',email:'Kaisales@ex.com'}
+        ];
+});
+</script>
+<!--
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {name:'Jani',country:'Norway'},
+        {name:'Carl',country:'Sweden'},
+        {name:'Margareth',country:'England'},
+        {name:'Hege',country:'Norway'},
+        {name:'Joe',country:'Denmark'},
+        {name:'Gustav',country:'Sweden'},
+        {name:'Birgit',country:'Denmark'},
+        {name:'Mary',country:'England'},
+        {name:'Kai',country:'Norway'}
+        'Cary',
+        'PJ',
+        'Zade',
+        'Kai'
+    ];
+});
+</script> --> 
+
+
+</body>
+</html>
