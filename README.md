@@ -1,5 +1,11 @@
 # WebDev
 Javascript, Angular, php AJAX principles etc.
+**Updated webpages will come through GitHub pages at:**
+https://pj92singh.github.io/WebDev/
+
+**270/ShoppingWebsite**
+https://pj92singh.github.io/WebDev/cmp.html
+
 
 **The following have been depreciated for now**
 
@@ -8,9 +14,10 @@ Javascript, Angular, php AJAX principles etc.
 ~~Porfolio - http://singh13x.myweb.cs.uwindsor.ca/intro.html~~
 
 ~~ShoppingWeb - http://singh13x.myweb.cs.uwindsor.ca/shop2.php~~
+**Moved to:**
+https://pj92singh.github.io/WebDev/cmp.html 
+(some tabs/pages will not work! They are still being transfered over) 
 
-**Updated webpages will come through GitHub pages at:**
-https://pj92singh.github.io/WebDev/
 
 **other links will be added soon!**
 
