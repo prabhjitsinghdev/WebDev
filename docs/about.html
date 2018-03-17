@@ -136,9 +136,9 @@ li.dropdown {
 
 
 <ol>
-  <li ng-repeat="x in names | orderBy:'position' | filter:test">
-    {{ x.name + ', ' + x.position + ', ' + x.email }} 
-  </li>
+  <ui ng-repeat="x in names | orderBy:'position' | filter:test">
+    {{ x.name + ', ' + x.position + ', ' + x.email }}<br>
+  </ui>
 </ol>
 
 <!--
