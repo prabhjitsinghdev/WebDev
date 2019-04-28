@@ -26,5 +26,10 @@ Mainly it will be tested segments that can be use for,
 other parts of websites and other projects.
 
 
+**SuiteScripts**
+-Scripts made via NetSuite API
+-These scripts will be in Ss1.0 and Ss2.0 
+-Various scripts from Client, UserEvent to MapReduce and RESTlets etc.
+
 
 
