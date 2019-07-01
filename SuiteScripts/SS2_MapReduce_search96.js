@@ -1,12 +1,20 @@
-/* 
-pj92singh
+/*******************************************************************
+*
+*
+* Name: MapReudce search96
+* Script Type: Map Reduce Script
+* Version: 1.0.0
+*
+*
+* Author: pj92singh
 Prabhjit Singh 
 
-Map/reduce script example 
+* Purpose: Map/reduce script example 
 -referring to search 96 in test account 
 -then retrive related fields and return appropriate data
-
-*/
+*
+*
+* ******************************************************************* */
 
 /**
  *@NApiVersion 2.x
