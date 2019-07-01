@@ -1,12 +1,21 @@
-/*
-* pj92singh
-* Prabhjit Singh
+/*******************************************************************
 *
-* This script checks value of custom field (checkbox type) 
+*
+* Name: Client Checbox checker
+* Script Type: Client Script
+* Version: 1.0.0
+*
+*
+* Author: pj92singh
+Prabhjit Singh 
+
+* Purpose: This script checks value of custom field (checkbox type) 
 * Then based on the value it will allow the access of the record
 * else alert and lock the record
 *
-*/
+* ******************************************************************* */
+
+
 /**
  * @NApiVersion 2.x
  *@NScriptType ClientScript
