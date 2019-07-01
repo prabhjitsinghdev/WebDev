@@ -1,10 +1,23 @@
-/* 
-*pj92isngh
-*Prabhjit Singh 
+/*******************************************************************
+*
+*
+* Name: Client ProjOps
+* Script Type: Client Script
+* Version: 1.0.0
+*
+*
+* Author: pj92isngh
+* Prabhjit Singh 
+
+* Purpose: 
 * client script works on  native project record and custom record
 * it will pull the related ProjOp record and gets its value
 * This value can be used for various purposes (show on PDF/employee record etc)
-*/
+
+*
+*
+* ******************************************************************* */
+
 
 /**
  * @NApiVersion 2.x
