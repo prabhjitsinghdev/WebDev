@@ -1,12 +1,22 @@
-/* pj92singh 
-* Prabhjit Singh
-* SS1.0 lock record
-* userevent script 
-* 
-* this script removes the edit button 
+/*******************************************************************
+*
+*
+* Name: UserEvent Lock Record
+* Script Type: UserEvent Script
+* Version: 1.0.0
+*
+*
+* Author: pj92singh
+Prabhjit Singh 
+
+* Purpose: this script removes the edit button 
 * & is a work around for those who want to lock the record
 * If the user role is not the Administrator then they cannot edit the record
-*/
+*
+*
+* ******************************************************************* */
+
+
 function beforeload(context){
 		if(type == 'view'){
 			if(nlapiGetRole()!= 3){
