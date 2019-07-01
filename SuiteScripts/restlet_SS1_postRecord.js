@@ -1,13 +1,21 @@
-//SS1.0 
-/* 
-pj92singh
+/*******************************************************************
+*
+*
+* Name: Restlet POST record
+* Script Type: Restlet Script
+* Version: 1.0.0
+*
+*
+* Author: pj92singh
 Prabhjit Singh 
 
-RESTlet ss1.0 takes in the JSON data paramters 
+* Purpose: RESTlet ss1.0 takes in the JSON data paramters 
 And using the post function it will
 create a record and checks if sales order then adds line item 
+*
+*
+* ******************************************************************* */
 
-*/
 function postRESTlet(datain) {
 	// body...
 	nlapiLogExecution('DEBUG', 'post function', 'POST');
