@@ -1,10 +1,20 @@
-/*
-pj92singh
-Prabhjit Singh 
+/*******************************************************************
+*
+*
+* Name: Suitelet create Message record
+* Script Type: Suitelet Script
+* Version: 1.0.0
+*
+*
+* Author: pj92singh
+			Prabhjit Singh 
 
-SUITElet which creates a message record between employee and customer
+* Purpose: SUITElet which creates a message record between employee and customer
 -the script will then redirect to the message record when created
- */
+
+*
+*
+* ******************************************************************* */
 /**
  * @NApiVersion 2.x
  * @NScriptType suitelet
