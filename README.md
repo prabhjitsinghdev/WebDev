@@ -9,7 +9,7 @@ https://pj92singh.github.io/WebDev/cmp.html
 
 **The following have been depreciated for now**
 
-~~Code used in web projects such as:~~
+Code used in web projects such as:
 
 ~~Porfolio - http://singh13x.myweb.cs.uwindsor.ca/intro.html~~
 
@@ -30,6 +30,6 @@ other parts of websites and other projects.
 -Scripts made via NetSuite API
 -These scripts will be in Ss1.0 and Ss2.0 
 -Various scripts from Client, UserEvent to MapReduce and RESTlets etc.
-
+-These will extract data from searches, configure records and send data.
 
 
