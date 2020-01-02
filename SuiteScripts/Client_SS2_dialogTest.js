@@ -7,8 +7,8 @@
 *
 *
 * Author: Prabhjit Singh 
-* Purpose: CLIENT script teting on custom Serial Num record
-*
+* Purpose: CLIENT script testing on custom Serial Num record.
+* Code is only used for testing dialogs/alerts on the custom record type
 *
 * ******************************************************************* */
 /**
