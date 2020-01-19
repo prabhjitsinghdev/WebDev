@@ -51,6 +51,12 @@ namespace ConsoleApp4
                //using admin information 
               // and suitetalk endpoint
                 TODO connector information test
+                     //URL https://tstdrv837235399.suitetalk.api.netsuite.com
+                     try{
+                          
+                     }catch(Error){
+                     
+                     }
             }
         }
  }
