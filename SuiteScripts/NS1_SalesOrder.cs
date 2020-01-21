@@ -53,7 +53,8 @@ namespace ConsoleApp4
                 TODO connector information test
                      //URL https://tstdrv837235399.suitetalk.api.netsuite.com
                      try{
-                          
+                        //public HttpRequest (string filename, string url, string queryString);
+                        HttpRequest myRequest = new HttpRequest('NS1_SalesOrder.cs', url, null);
                      }catch(Error){
                      
                      }
