@@ -16,24 +16,50 @@
 *
 *
 * ******************************************************************* */
- /**
+  /**
  * @NApiVersion 2.x
  *@NScriptType Suitelet
  *
  */
 define(['N/runtime', 'N/file', 'N/ui/serverWidget', 'N/ui/dialog'], 
 	function(runtime, file, ui, dialog){
+	/*
+	testing SUITELET to pass html code 
+	for case 
+	3258463
+	How to pass data to HTML suitelet 37380 Advanced Cloud Solutions LLP
+
+	-------*********************--------
+	FINAL NOTES
+	2 ways to deal with this
+	1) create FORM with INLINEHTML field that sources the 
+		file information as the deafult value
+	2) create everythign via HTML code including button
+	-using button tag
+    ----**********************----------
+    Oct 10th 2019, adding 
+      var scriptObj2 = runtime.getCurrentScript();
+log.debug("Remaining governance units2 in mapp stage " + scriptObj2.getRemainingUsage());
+
+this is for testing usage limit
+-----*************************----------
+
+	 */
+
 	function post(context){
+		//
 		var reponse = context.response; 
 		var request = context.request; 
 		var method = request.method; 
 		//if(method == 'POST'){
 				log.debug({ title: 'DEBUG', details: 'start' });
 				var runInfo = runtime.getCurrentSession(); 
-                log.debug({ title: 'DEBUG', details: 'runInfo ' +runInfo });
-                var test_h1 = '<html><body><h1>SUITELET running</h1><button type="button" id="testbutton" onclick="myclickFunction()">Click Me!</button><br><form method="post"> <h1>First name:</h1><br><input type="text" name="fname" value="Mickey" id="fname"><br><h1>Last name:</h1><br><input type="text" name="lastname" value="Mouse"><br><br><input type="submit"/></form><script>function myclickFunction(){alert("BUTTON CLICKED");}</script></body></html>';
-
-				var test_h2_no_form = '<html><body><h1>SUITELET running</h1><button type="button" id="testbutton" onclick="myclickFunction()">Click Me!</button><br><input type="submit" value="Submit" onclick="myclickFunction()"><script>function myclickFunction(){alert("BUTTON CLICKED");}</script><script>function mySubmitFunc(){}</script></body></html>';
+				//
+				log.debug({ title: 'DEBUG', details: 'runInfo ' +runInfo });
+				//testing for suiteanswers as well
+				//ID: 30315
+				var test_h1 = '<html><body><h1>SUITELET running method 1</h1><button type="button" id="testbutton" onclick="myclickFunction()">Click Me!</button><br><form method="post"> <h1>First name:</h1><br><input type="text" name="fname" value="Mickey" id="fname"><br><h1>Last name:</h1><br><input type="text" name="lastname" value="Mouse"><br><br><input type="submit"/></form><script>function myclickFunction(){alert("BUTTON CLICKED");}</script></body></html>';
+				var test_h2_no_form = '<html><body><h1>SUITELET running method 2</h1><button type="button" id="testbutton" onclick="myclickFunction()">Click Me!</button><br><input type="submit" value="Submit" onclick="myclickFunction()"><script>function myclickFunction(){alert("BUTTON CLICKED method 2");}</script><script>function mySubmitFunc(){}</script></body></html>';
 				//load the file
 				//and see if we can extract its contents
 				//also have form for butotn
@@ -42,6 +68,7 @@ define(['N/runtime', 'N/file', 'N/ui/serverWidget', 'N/ui/dialog'],
 					//2nd thing requested by custome
 					//cannot do both bc it needs writePage func
 					//so use the html button tage instead
+
 					/*
 					var form = ui.createForm({
 			          title: 'Create HTML sourcing SUIETLET'
@@ -53,6 +80,7 @@ define(['N/runtime', 'N/file', 'N/ui/serverWidget', 'N/ui/dialog'],
 			            functionName : 'options_fxn'
 			        }); 
 			        */
+
 					//load file
 					var basicFile = file.load({
 						id: 'SuiteScripts/basic_h.txt'
@@ -76,15 +104,22 @@ define(['N/runtime', 'N/file', 'N/ui/serverWidget', 'N/ui/dialog'],
 					This method can be used on text or .csv files.
 					*/
 					log.debug({ title: 'DEBUG', details: 'bfile_info ' +bfile_info });
+
+
 					//1st method 
 					//writepage
 					//to create form with default inlinehtml field
 					//context.response.writePage(form);
-
+					/************************************** */
 					//2nd method here 
 					//using write and add the html code for button
-                    //context.response.write(test_h2_no_form +bfile_info);
-                    context.response.write(test_h2_no_form +bfile_info);
+					//context.response.write(test_h2_no_form +bfile_info);
+
+					//testing for suiteanswers
+					context.response.write(test_h1); 
+                    			var scriptObj2 = runtime.getCurrentScript();
+					log.debug({title: "DEBUG", details:"Remaining governance units " + scriptObj2.getRemainingUsage()});
+
 				}catch(error){
 					log.debug({ title: 'error', details: 'error ' +error +' JSON error: ' +JSON.stringify(error) });
 				}
