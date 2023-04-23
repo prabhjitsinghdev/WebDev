@@ -15,7 +15,7 @@ Code used in web projects such as:
 
 ~~ShoppingWeb - http://singh13x.myweb.cs.uwindsor.ca/shop2.php~~
 **Moved to:**
-https://pj92singh.github.io/WebDev/cmp.html 
+https://prabhjitsinghdev.github.io/WebDev/cmp.html 
 (some tabs/pages will not work! They are still being transfered over) 
 
 
