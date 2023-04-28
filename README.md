@@ -1,10 +1,10 @@
 # WebDev
 Javascript, Angular, php AJAX principles etc.
 **Updated webpages will come through GitHub pages at:**
-https://pj92singh.github.io/WebDev/
+https://prabhjitsinghdev.github.io/WebDev/
 
 **270/ShoppingWebsite**
-https://pj92singh.github.io/WebDev/cmp.html
+https://prabhjitsinghdev.github.io/WebDev/cmp.html
 
 
 **The following have been depreciated for now**
