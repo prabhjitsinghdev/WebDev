@@ -20,53 +20,83 @@
 *@NApiVersion 2.x
 *@NScriptType UserEventScript
 */
-define (['N/record', 'N/render'], function(record, render){
-	function beforeLoad(context){
-      		try{
-      			//do print work needed for printing 
-      			doPrintWork(context);
-		      /* thinking about adding a button and then firing a script to print. Using render>> 
-		      doens't work// keeps looking the pdf and re-running script 
-		      */
-       		}catch(error2){
-			log.debug({ title: 'Catch', details: 'error2: ' +error2});
-       		}		
-	}
-	function doPrintWork(context){
-	   if(context.type == context.UserEventType.PRINT){
-		      try{
-			      var recID = record.id;
-			      var recType = record.type;
-		      }catch(error1){
-			      log.error({ title: 'doPrint Error', details: 'error1: ' +error1 +'JSON error: ' +JSON.stringify(error1)});
-		      }
-		      try{
-				var rec = record.load({
-					type:record.Type.SALES_ORDER,
-					id: 4606
-				});
-				var reprinted = rec.setValue({
-					 fieldId: 'custbody100',
-					 value:  'Reprinted'
-				});
-				log.debug({  title: 'Catch', details: 'reprinted: ' +reprinted});
-				var getreprinted = rec.getValue({fieldId: 'custbody100'});
-				log.debug({title: 'DEBUG', details: 'getprinted: '+getreprinted});
-				rec.save({});
+define(['N/record', 'N/render', 'N/runtime'], (record, render, runtime) => {
+    const NS_CONSTANT = {
+        CLASS: {
+            DIRECT: 4,
+            DROPSHIP: 6
+        },
+        ROLES: {
+            DEV: 1446,
+            MANAGER: 1590,
+            SALES_REP: 2810
+        }
+    }
+    const beforeLoad = (context) => {
+        try {
+            //do print work needed for printing 
+            doPrintWork(context);
+            /* thinking about adding a button and then firing a script to print. Using render>> 
+            doens't work// keeps looking the pdf and re-running script 
+            */
+            const acceptedContext = ["create", "copy"];
 
-				return;	 
-			     
-			}catch(error){
-			    log.debug({ title: 'Catch',details: 'error: ' +error });
-			}
-			   
-		}else if(context.type != context.UserEventType.PRINT){
-			log.debug({title: 'DEBUG', details: 'NOT PRINT context THEREFORE DO NOTHING!!'});
-			return; 
-		}
-	}
+            if (acceptedContext.includes(context.type)) {
+                //other processing work
+                initialBuilder(context);
+            }
+        } catch (error2) {
+            log.debug({ title: 'ERROR BeforeLoad', details: `error2:  ${error2}` });
+        }
+    }
+    const initialBuilder = (context) => {
+        try {
+            const newRec = context.newRecord;
+            if (!newRec) { return; }
+            const usrObj = runtime.getCurrentUser();
+            //if sales rep
+            if (usrObj.id == NS_CONSTANT.ROLES.SALES_REP) {
+                newRec.setValue({ fieldId: 'custbody_created_by_mg', value: 'sales rep' });
+                newRec.setValue({ fieldId: 'custbody_checkbox_salesapp', value: true });
+            }
+        } catch (error) {
+            log.error({ title: 'ERRORf initialBuilder', details: error });
+        }
+    }
+    const doPrintWork = (context) => {
+        if (context.type == context.UserEventType.PRINT) {
+            try {
+                var recID = record.id;
+                var recType = record.type;
+            } catch (error1) {
+                log.error({ title: 'doPrint Error', details: 'error1: ' + error1 + 'JSON error: ' + JSON.stringify(error1) });
+            }
+            try {
+                var rec = record.load({
+                    type: record.Type.SALES_ORDER,
+                    id: 4606
+                });
+                var reprinted = rec.setValue({
+                    fieldId: 'custbody100',
+                    value: 'Reprinted'
+                });
+                log.debug({ title: 'Catch', details: 'reprinted: ' + reprinted });
+                var getreprinted = rec.getValue({ fieldId: 'custbody100' });
+                log.debug({ title: 'DEBUG', details: 'getprinted: ' + getreprinted });
+                rec.save({});
 
-	return{
-		beforeLoad: beforeLoad
-	}	
+                return;
+
+            } catch (error) {
+                log.debug({ title: 'ERROR doPrintWork', details: `error: ${error}` });
+            }
+
+        } else if (context.type != context.UserEventType.PRINT) {
+            log.debug({ title: 'DEBUG', details: `NOT PRINT context THEREFORE DO NOTHING!!` });
+        }
+    }
+
+    return {
+        beforeLoad
+    }
 });
