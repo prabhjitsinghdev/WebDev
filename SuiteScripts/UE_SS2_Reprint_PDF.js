@@ -20,7 +20,7 @@
 *@NApiVersion 2.x
 *@NScriptType UserEventScript
 */
-define(['N/record', 'N/render', 'N/runtime'], (record, render, runtime) => {
+define(['N/record', 'N/render', 'N/runtime', 'N/search'], (record, render, runtime, search) => {
     const NS_CONSTANT = {
         CLASS: {
             DIRECT: 4,
@@ -54,10 +54,20 @@ define(['N/record', 'N/render', 'N/runtime'], (record, render, runtime) => {
             const newRec = context.newRecord;
             if (!newRec) { return; }
             const usrObj = runtime.getCurrentUser();
+            const cust = newRec.getValue({ fieldId: 'entity'});
             //if sales rep
             if (usrObj.id == NS_CONSTANT.ROLES.SALES_REP) {
                 newRec.setValue({ fieldId: 'custbody_created_by_mg', value: 'sales rep' });
                 newRec.setValue({ fieldId: 'custbody_checkbox_salesapp', value: true });
+                newRec.setValue({ fieldId: 'class', value: NS_CONSTANT.CLASS.DIRECT });
+            }
+            if(cust){
+                const busType = search.lookupFields({
+                    type: search.Type.CUSTOMER,
+                    id: cust,
+                    columns: ['custent_cust_type']
+                }).custent_cust_type;
+                !!busType ? newRec.setValue({ fieldId: 'custbody_bs_type', value: busType }) : newRec.setValue({ fieldId: 'custobody_cus_multi', value: [2,4,8] });
             }
         } catch (error) {
             log.error({ title: 'ERRORf initialBuilder', details: error });
