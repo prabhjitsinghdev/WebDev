@@ -29,7 +29,7 @@ other parts of websites and other projects.
 
 **SuiteScripts**
 -Scripts made via NetSuite API
--These scripts will be in Ss1.0 and Ss2.0 
+-These scripts will be in SS1.0/2.0/2.1 
 -Various scripts from Client, UserEvent to MapReduce and RESTlets etc.
 -These will extract data from searches, configure records and send data.
 
