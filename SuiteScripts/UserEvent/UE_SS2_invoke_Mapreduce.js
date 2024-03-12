@@ -16,23 +16,29 @@
  * @NScriptType UserEventScript
  * @NModuleScope SameAccount
  */
-define(['N/task'],
+define(['N/task', 'N/runtime'], (task, runtime) => {
+	const RESOURCES = {
+		SCRIPTS: {
+			MR_CHECKLIST: {
+				SCRIPTID: "customscript460",
+				DEPLOYID: "customdeploy1"
 
-function(task) {
+			}
+		}
+	}
+	const afterSubmit = (scriptContext) => {
+		if (runtime.executionContext != runtime.ContextType.USER_INTERFACE) {
+			let mrTask = task.create({
+				taskType: task.TaskType.MAP_REDUCE,
+				scriptId: RESOURCES.SCRIPTS.MR_CHECKLIST.SCRIPTID,
+				deploymentId: RESOURCES.SCRIPTS.MR_CHECKLIST.DEPLOYID
+			});
+			let mrTaskId = mrTask.submit();
+			log.debug({ title: "DEBUG", details: mrTaskId });
+		}
+	}
+	return {
+		afterSubmit
+	};
 
-    function afterSubmit(scriptContext) {
-    	var mrTask = task.create({
-    	    taskType: task.TaskType.MAP_REDUCE,
-    	    scriptId: "customscript460",
-			deploymentId: "customdeploy1"
-    	});
-    	log.debug(mrTask);
-    	
-    	var mrTaskId = mrTask.submit();
-    	log.debug(mrTaskId);
-    }
-    return {
-        afterSubmit: afterSubmit
-    };
-    
 });
