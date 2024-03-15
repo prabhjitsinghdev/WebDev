@@ -20,8 +20,27 @@ Prabhjit Singh
  *@NApiVersion 2.1
  *@NScriptType MapReduceScript 
  */
-//2nd map reduce for custom 15 saved serach 
-define(['N/search'], (search) => {
+define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
+    const NS_CONST = {
+        RECORDS = {
+            CUST_EMP_TXN = {
+                TYPE : "custrec_etxn_emp",
+                BODY_FIELDS = {
+                    MEMO: "custrec_etxn_memo",
+                    UNIQUE_ID: "custrec_etxn_uni_id",
+                    EMP_TYPE: "custrec_etxn_etype",
+                    INACTIVE : "inactive"
+                },
+            }
+        },
+
+        LISTS = {
+            RECRUITER: 1,
+            MANAGER: 2,
+            ADVISOR: 3
+        }
+
+    }
     const getInputData = (context) => {
         try {
             const script = runtime.getCurrentScript();
@@ -46,36 +65,63 @@ define(['N/search'], (search) => {
     }
     const map = (context) => {
         try {
-            //key stuff
-            var key = context.key;
-            var recobj = JSON.parse(context.value); //gettting object
-            var trandate = recobj.values.trandate;
-            var transactionnumber = recobj.values.transactionnumber;
-            var salesrepName = recobj.values.salesrep.text;
-            var salesrepID = recobj.values.salesrep.value;
-            var salesrepSupID = recobj.values['supervisor.salesRep'].value;
-            var salesrepSupName = recobj.values['supervisor.salesRep'].text;
-            log.debug({
-                title: 'DEBUG',
-                details: 'rec obj: ' + recobj
-            });
+            //key data
+            const key = context.key;
+            const recobj = JSON.parse(context.value); //gettting object
+            const trandate = recobj.values.trandate;
+            const transactionnumber = recobj.values.transactionnumber;
+            const salesrepName = recobj.values.salesrep.text;
+            const salesrepID = recobj.values.salesrep.value;
+            const salesrepSupID = recobj.values['supervisor.salesRep'].value;
+            const salesrepSupName = recobj.values['supervisor.salesRep'].text;
+            log.debug({ title: 'DEBUG',details: 'rec obj: ' + recobj });
             //now break that down more
-            var salesrep = recobj.values.salesrep;
+            const salesrep = recobj.values.salesrep;
             //now try to get supevisor's id
             //values.values.supervisor.text??
-            var supervisorName = recobj.values.supervisor.text;
-            log.debug({
-                title: 'DEBUG',
-                details: 'Supervisor Name: ' + supervisorName
-            });
-
+            const supervisorName = recobj.values.supervisor.text;
+            log.debug({ title: 'DEBUG', details: `Supervisor Name: ${supervisorName}` });
             context.write({
                 key: salesrepID,
                 value: transactionnumber
             });
-            //update the memo of each SALES REP
+            //update the custom field of each SALES REP
             //with this line
             //the sales orders under your name are: " "
+            if(!salesrepID){ return; }
+            const empSrch = search.create({
+                type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
+                filters: [
+                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID, "IS", salesrepID], 
+                    "AND",
+                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.INACTIVE, "IS", false ]
+                ],
+                columns: [
+                    "internalid",
+                    NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID,
+                    NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.EMP_TYPE,
+                    NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.MEMO,
+                ]
+            }).run().getRange(0, 1000).map((row) => {
+
+            });
+            search.lookupFields({
+                type: ,
+                id: salesrepID,
+                columns: 
+            });
+            const updateStng = `the sales orders under your name are: ${transactionnumber}`
+            if (salesrepID) {
+                record.submitFields({
+                    type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
+                    id: salesrepID,
+                    values: updateStng,
+                    options: {
+                        enablesourcing: false
+                    }
+                });
+            }
+
 
         } catch (e) {
             log.error({ title: 'ERROR map', details: e });
