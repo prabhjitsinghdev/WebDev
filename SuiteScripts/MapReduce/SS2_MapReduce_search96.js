@@ -22,10 +22,10 @@ Prabhjit Singh
  */
 define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
     const NS_CONST = {
-        RECORDS = {
-            CUST_EMP_TXN = {
+        RECORDS : {
+            CUST_EMP_TXN : {
                 TYPE : "custrec_etxn_emp",
-                BODY_FIELDS = {
+                BODY_FIELDS : {
                     MEMO: "custrec_etxn_memo",
                     UNIQUE_ID: "custrec_etxn_uni_id",
                     EMP_TYPE: "custrec_etxn_etype",
@@ -34,7 +34,7 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
             }
         },
 
-        LISTS = {
+        LISTS : {
             RECRUITER: 1,
             MANAGER: 2,
             ADVISOR: 3
@@ -105,11 +105,13 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
             }).run().getRange(0, 1000).map((row) => {
 
             });
+            /*
             search.lookupFields({
                 type: ,
                 id: salesrepID,
                 columns: 
             });
+            */
             const updateStng = `the sales orders under your name are: ${transactionnumber}`
             if (salesrepID) {
                 record.submitFields({
