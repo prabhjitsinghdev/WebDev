@@ -89,6 +89,7 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
             //with this line
             //the sales orders under your name are: " "
             if(!salesrepID){ return; }
+            const resultArr = [];
             const empSrch = search.create({
                 type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
                 filters: [
@@ -102,8 +103,14 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
                     NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.EMP_TYPE,
                     NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.MEMO,
                 ]
-            }).run().getRange(0, 1000).map((row) => {
-
+            }).run().getRange(0, 1000).map((result) => {
+                if(result[NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.EMP_TYPE] === NS_CONST.LISTS.ADVISOR){
+                    //get the memo
+                    const resultObj = {};
+                    resultObj.memo = result[NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.MEMO];
+                    resultObj.id = NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID;
+                    resultArr.push(resultObj)
+                }
             });
             /*
             search.lookupFields({
