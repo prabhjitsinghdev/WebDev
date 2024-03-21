@@ -22,19 +22,19 @@ Prabhjit Singh
  */
 define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
     const NS_CONST = {
-        RECORDS : {
-            CUST_EMP_TXN : {
-                TYPE : "custrec_etxn_emp",
-                BODY_FIELDS : {
+        RECORDS: {
+            CUST_EMP_TXN: {
+                TYPE: "custrec_etxn_emp",
+                BODY_FIELDS: {
                     MEMO: "custrec_etxn_memo",
                     UNIQUE_ID: "custrec_etxn_uni_id",
                     EMP_TYPE: "custrec_etxn_etype",
-                    INACTIVE : "inactive"
+                    INACTIVE: "inactive"
                 },
             }
         },
 
-        LISTS : {
+        LISTS: {
             RECRUITER: 1,
             MANAGER: 2,
             ADVISOR: 3
@@ -74,7 +74,7 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
             const salesrepID = recobj.values.salesrep.value;
             const salesrepSupID = recobj.values['supervisor.salesRep'].value;
             const salesrepSupName = recobj.values['supervisor.salesRep'].text;
-            log.debug({ title: 'DEBUG',details: 'rec obj: ' + recobj });
+            log.debug({ title: 'DEBUG', details: 'rec obj: ' + recobj });
             //now break that down more
             const salesrep = recobj.values.salesrep;
             //now try to get supevisor's id
@@ -88,14 +88,14 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
             //update the custom field of each SALES REP
             //with this line
             //the sales orders under your name are: " "
-            if(!salesrepID){ return; }
+            if (!salesrepID) { return; }
             const resultArr = [];
             const empSrch = search.create({
                 type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
                 filters: [
-                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID, "IS", salesrepID], 
+                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID, "IS", salesrepID],
                     "AND",
-                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.INACTIVE, "IS", false ]
+                    [NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.INACTIVE, "IS", false]
                 ],
                 columns: [
                     "internalid",
@@ -104,12 +104,24 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
                     NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.MEMO,
                 ]
             }).run().getRange(0, 1000).map((result) => {
-                if(result[NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.EMP_TYPE] === NS_CONST.LISTS.ADVISOR){
+                if (result[NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.EMP_TYPE] === NS_CONST.LISTS.ADVISOR) {
                     //get the memo
                     const resultObj = {};
                     resultObj.memo = result[NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.MEMO];
                     resultObj.id = NS_CONST.RECORDS.CUST_EMP_TXN.BODY_FIELDS.UNIQUE_ID;
-                    resultArr.push(resultObj)
+                    resultArr.push(resultObj) // for later use?
+
+                    const updateStng = `the sales orders under your name are: ${transactionnumber}`
+                    if (result["internalid"]) {
+                        record.submitFields({
+                            type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
+                            id: result["internalid"], //salesrepID
+                            values: updateStng,
+                            options: {
+                                enablesourcing: false
+                            }
+                        });
+                    }
                 }
             });
             /*
@@ -119,18 +131,6 @@ define(['N/search', 'N/record', 'N/runtime'], (search, record, runtime) => {
                 columns: 
             });
             */
-            const updateStng = `the sales orders under your name are: ${transactionnumber}`
-            if (salesrepID) {
-                record.submitFields({
-                    type: NS_CONST.RECORDS.CUST_EMP_TXN.TYPE,
-                    id: salesrepID,
-                    values: updateStng,
-                    options: {
-                        enablesourcing: false
-                    }
-                });
-            }
-
 
         } catch (e) {
             log.error({ title: 'ERROR map', details: e });
