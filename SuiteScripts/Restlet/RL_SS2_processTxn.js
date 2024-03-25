@@ -10,32 +10,54 @@ define([
     'N/search'
 ], (record, log, search) => {
 
+    const acceptedPayments = ["CreditCard", "ACH", "Cheque"];
+
     const onPost = (context) => {
         try {
             //get the payload first 
             const payload = context.payload;
-            if(payload.length > 0 || payload != undefined){
+            if (payload.length > 0 || payload != undefined) {
                 verifyPayload(payload);
             }
-            
+
         } catch (error) {
-            log.error({ title: "ERROR onPost", details: `error ${error}`});
+            log.error({ title: "ERROR onPost", details: `error ${error}` });
         }
     }
     const verifyPayload = (payload) => {
         try {
-            Object.keys(payload).forEach((segment)=>{
-                if(segment.type == "salesorder"){
+            Object.keys(payload).forEach((segment) => {
+                if (segment.type == "salesorder") {
                     //check if payment is prepaid
-                    if(segment.values["paymenttype"] == "prepaid"){return;}
+                    if (segment.values["paymenttype"] == "prepaid") { 
+                        return;
+                    }else if(acceptedPayments.includes(segment.type)){
+                        buildRecord(segment);
+                    }
                 }
             });
         } catch (error) {
-            log.error({ title:"ERROR verifyPayload", details: error });
+            log.error({ title: "ERROR verifyPayload", details: error });
         }
     }
-    return{
+    const buildRecord = (data) => {
+        try {
+            const newRec = record.create({
+                type: data.type,
+                isDynamic: false
+            });
+            Object.keys(data).forEach((fields)=>{
+                newRec.setValue({ fieldId: data.fields, value: data.fields.value });
+            });
+            const savedRec = newRec.save();
+            log.audit({ title:'AUDIT savedRecord', details: savedRec });
+           
+        } catch (error) {
+            log.error({ title: "ERROR buildRecord", details: error });
+        }
+    }
+    return {
         onPost
     }
-    
+
 });
