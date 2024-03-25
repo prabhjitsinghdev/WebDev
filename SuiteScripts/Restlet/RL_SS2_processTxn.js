@@ -47,7 +47,17 @@ define([
                 isDynamic: false
             });
             Object.keys(data).forEach((fields)=>{
-                newRec.setValue({ fieldId: data.fields, value: data.fields.value });
+                if(data[fields] !== "items"){
+                    newRec.setValue({ fieldId: data[fields], value: data[fields][value] });
+                }else{
+                    let sublistLen = data[fields]["items"].length; 
+                    for(let x = 0; x < sublistLen; x++){
+                        let tempItemObj = data[fields]["items"];
+                        Object.keys(tempItemObj).forEach((itemField) =>{ 
+                            newRec.setValue({ sublistId: "item", fieldId: tempItemObj[itemField], value: tempItemObj[itemField][value] });
+                        });
+                    }
+                }
             });
             const savedRec = newRec.save();
             log.audit({ title:'AUDIT savedRecord', details: savedRec });
