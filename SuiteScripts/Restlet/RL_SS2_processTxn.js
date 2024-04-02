@@ -54,7 +54,7 @@ define([
                     for(let x = 0; x < sublistLen; x++){
                         let tempItemObj = data[fields]["items"];
                         Object.keys(tempItemObj).forEach((itemField) =>{ 
-                            newRec.setValue({ sublistId: "item", fieldId: tempItemObj[itemField], value: tempItemObj[itemField][value] });
+                            newRec.setSublistValue({ sublistId: "item", fieldId: tempItemObj[itemField], value: tempItemObj[itemField][value] });
                         });
                     }
                 }
