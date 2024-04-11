@@ -8,6 +8,8 @@
 * Suitelet to print the Return Authorization and their different PDF versions that are passed via a CS script
 * The CS script will allow the user to select an option to which PDF version they want and that is passed as an 
 * parameter whcich is used in this Suitelet to display the correct PDF. 
+
+* The PDF is created under Adv PDF's and should be present without any other changes made to it *
 */
 define([
     'N/record',
