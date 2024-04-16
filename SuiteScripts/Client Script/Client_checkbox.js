@@ -131,37 +131,35 @@ Prabhjit Singh
                      //let the create the invoice
                      log.debug({ title: 'DEBUG', details: `cust: ${custEntity} condtion 1 allowed!` });
                      //alert 
-                     var allowedInfoMessage = message.create({
+                     const allowedInfoMessage = message.create({
                          title: "Allowed",
-                         message: "Customer " + custEntity + " is allowed.",
+                         message: `Customer ${custEntity} is allowed.`,
                          type: message.Type.INFORMATION
                      });
                      allowedInfoMessage.show();
                      setTimeout(allowedInfoMessage.hide, 10000);
                  } else {
                      //allowed
-                     log.debug({ title: 'DEBUG', details: 'cust: ' + custEntity + ' condtion 1 not allowed!' });
+                     log.debug({ title: 'DEBUG', details: `cust: ${custEntity} condtion 1 not allowed!` });
                  }
 
-             }
-             //elsee if the checkboxx is fals 
-             //don't let them create the record
-             else if (checkboxx == false) {
+             }else if (checkboxx == false) {
+                //elsee if the checkboxx is fals 
+                //don't let them create the record
                  if (scriptcontext == 'CREATE' && createdFromField == undefined) {
-                     log.debug({ title: 'DEBUG', details: 'cust: ' + custEntity + ' Allowed in condtion 2' });
+                     log.debug({ title: 'DEBUG', details: `cust: ${custEntity} Allowed in condtion 2` });
                      //allow only if stand alone invoice 
                  } else {
                      //don't let them create the record
-                     log.debug({ title: 'DEBUG', details: 'cust: ' + custEntity + ' Not allowed in condtion 2 !' });
-                     var notAllowedMessage = message.create({
+                     log.debug({ title: 'DEBUG', details: `cust: ${custEntity} Not allowed in condtion 2 !` });
+                     const notAllowedMessage = message.create({
                          title: "NOT ALLOWED",
-                         message: "Customer: " + custEntity + ' not allowed!!',
+                         message: `Customer: ${custEntity} 'not allowed!!`,
                          type: message.Type.WARNING
                      });
                      notAllowedMessage.show();
                      setTimeout(notAllowedMessage.hide, 10000);
                  }
-
              }
              //}//end if custEntity != null 
              //endcatch
@@ -171,7 +169,7 @@ Prabhjit Singh
          // }//end of main if 
      }
      //save record function
-     function saveRecord(checkboxx, createdFromField) {
+     const saveRecord = (checkboxx, createdFromField) => {
          if (checkboxx == false || createdFromField == null) {
              //cannot save record
              return false;
