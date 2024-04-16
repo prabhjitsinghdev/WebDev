@@ -164,7 +164,7 @@ define(['N/currentRecord', 'N/search', 'N/runtime', 'N/ui/message'],
                 //}//end if custEntity != null 
                 //endcatch
             } catch (error) {
-                log.debug({ title: 'DEBUG', details: 'catch error!!!' });
+                log.debug({ title: 'DEBUG', details: `error validatecustomer ${error}` });
             }
             // }//end of main if 
         }
