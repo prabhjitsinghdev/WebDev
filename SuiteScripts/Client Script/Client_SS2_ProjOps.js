@@ -3,7 +3,7 @@
 *
 * Name: Client ProjOps
 * Script Type: Client Script
-* Version: 1.0.0
+* Version: 1.0.1
 *
 *
 * Author: prabhjitsinghdev
