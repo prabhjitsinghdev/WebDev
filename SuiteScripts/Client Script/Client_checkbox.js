@@ -6,7 +6,7 @@
 * Version: 1.0.1
 *
 *
-* Author: pj92singh
+* Author: prabhjitsinghdev
 Prabhjit Singh 
 
 * Purpose: This script checks value of custom field (checkbox type) 
