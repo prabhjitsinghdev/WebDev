@@ -28,7 +28,7 @@ define(['N/record', 'N/currentRecord', 'N/ui/message', 'N/ui/dialog'],
             log.debug({ title: 'DEBUG', details: 'CLIENT SS2' + 'context ' + context + 'JSON ' + JSON.stringify(context) });
             let curRec = currentRecord.get();
             if (acceptedContexts.includes(context.mode)) {
-                //new record
+                //current record
                 var recID = record.id;
                 var recType = record.type;
                 log.debug({ title: 'DEBUG', details: 'id//type: ' + recID + ' // ' + recType });
