@@ -7,12 +7,14 @@
 *
 *
 * Author: Prabhjit Singh
-* pj92singh
+* psinghdev92
 * Purpose: Inactive Vendor > Make Copy of Vendor Bill > Show warning message
 *
 * script runs on vednor bills/payment 
 * **** if bill is not stand alone then the system treats it as a copy 
 * so the script will execute in that context as well ****
+*
+* WE can also use this on the records and break it down to run specific logic for any record type 
 * ******************************************************************* */
 /**
 * @NApiVersion 2.x
