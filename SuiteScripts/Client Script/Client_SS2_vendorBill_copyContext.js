@@ -28,7 +28,6 @@ define(['N/record', 'N/currentRecord', 'N/ui/message', 'N/ui/dialog'],
             log.debug({ title: 'DEBUG', details: 'CLIENT SS2' + 'context ' + context + 'JSON ' + JSON.stringify(context) });
             let curRec = currentRecord.get();
             if (acceptedContexts.includes(context.mode)) {
-                //current record
                 var recID = record.id;
                 var recType = record.type;
                 log.debug({ title: 'DEBUG', details: 'id//type: ' + recID + ' // ' + recType });
@@ -37,9 +36,8 @@ define(['N/record', 'N/currentRecord', 'N/ui/message', 'N/ui/dialog'],
                     title: 'Alert',
                     message: 'Record is being created or edited!'
                 });
-            }
-            //in copy mode!!! 
-            if (!acceptedContexts.includes(context.mode)) {
+            }else if (!acceptedContexts.includes(context.mode)) {
+                //in copy mode!!! 
                 log.debug({ title: 'DEBUG', details: 'copy mode' });
                 //alert-------------------------------
                 dialog.alert({
@@ -47,7 +45,6 @@ define(['N/record', 'N/currentRecord', 'N/ui/message', 'N/ui/dialog'],
                     message: 'Record created as a copy!'
                 });
                 //alert--end--------------------------
-
                 /* Other logic to setup when record is a copy */
                 curRec.setValue({ fieldId: 'memo', value: `this record is being created as a copy and is will require admin approval` });
                 curRec.setValue({ fieldId: 'custbody_ecm_multitext', value: [3,5,8] });
