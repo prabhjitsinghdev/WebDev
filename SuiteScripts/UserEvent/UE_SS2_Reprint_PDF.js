@@ -70,7 +70,7 @@ define(['N/record', 'N/render', 'N/runtime', 'N/search'], (record, render, runti
                 !!busType ? newRec.setValue({ fieldId: 'custbody_bs_type', value: busType }) : newRec.setValue({ fieldId: 'custobody_cus_multi', value: [2,4,8] });
             }
         } catch (error) {
-            log.error({ title: 'ERRORf initialBuilder', details: error });
+            log.error({ title: 'ERROR initialBuilder', details: error });
         }
     }
     const doPrintWork = (context) => {
