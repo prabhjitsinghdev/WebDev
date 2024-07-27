@@ -42,6 +42,51 @@ define(['N/record', 'N/search', 'N/runtime'], (record, search, runtime)=>{
         }
     }
 
+  
+  /** Generic limited serach builder 
+  *
+  */
+  const genericLimitedSearch = (searchFilters, searchColumns, searchType, rangeLimit) => {
+    try{
+      /*
+      //How the filters and columns should look like when being passed through 
+      
+      const filters = [
+        ['customer.internalid', 'anyof',  customer], "AND",
+        ["type", "anyof", "CustInvc"],
+        "AND",
+        ["mainline", "is", "T"],
+        "AND",
+        ["trandate", "onorafter", formatedDate],
+      ];
+      const columns = [
+        { name: "ordertype", sort: search.Sort.ASC },
+        { name: "trandate" },
+        { name: "tranid" },
+        { name: "account" },
+        { name: "amount" },
+        { name: "entity", join: "createdfrom" },
+      ];
+      */
+      if(searchFilters && searchColumns && searchType){
+        if(!NaN(rangeLimit)){
+          const builtSearch = search.create({
+              type: searchType,
+              filters: searchFilters,
+              columns: searchColumns,
+          });
+          const ranSearch = builtSearch.run().getRange(0, rangeLimit).map((result) => {
+                    console.log(`DEBUG result ${JSON.stringify(result)}`);
+                  });
+        }
+      }
+      
+    }catch(e){
+      log.error('ERROR running Search', e );
+    }
+  }
+
+
   return{
     getLineItems
   }
