@@ -1,4 +1,7 @@
 define(['N/record', 'N/search', 'N/runtime'], (record, search, runtime)=>{
+  /***
+  ** Returns an Arry of Objects with the line and some information
+  **/
   const getLineItems = (recordObj) => {
         try {
             const lineItemArr = [];
