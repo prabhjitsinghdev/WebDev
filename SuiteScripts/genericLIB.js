@@ -1,4 +1,10 @@
 define(['N/record', 'N/search', 'N/runtime'], (record, search, runtime)=>{
+  
+  const CONSTANTS : {
+    STRNG : {
+      DELIMTER_HEX : \/u0005/
+    }
+  }
   /***
   ** Returns an Arry of Objects with the line and some information
   **/
@@ -86,9 +92,22 @@ define(['N/record', 'N/search', 'N/runtime'], (record, search, runtime)=>{
     }
   }
 
+  const editStrings = (param) => {
+  try {
+     if(!param){ return; }
+
+     return param.split(CONSTANTS.STRNG.DELIMTER_HEX); 
+
+   } catch(e) {
+     log.error({ title:'ERROR editStrings', details: e });
+   } 
+  }
+
 
   return{
-    getLineItems
+    getLineItems,
+    genericLimitedSearch,
+    editStrings
   }
 });
 
