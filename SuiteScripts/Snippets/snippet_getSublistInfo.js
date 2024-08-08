@@ -108,11 +108,9 @@ require(["N/search", "N/currentRecord", "N/ui/dialog", "N/runtime"], (
         }
     }
 
-    console.log('DEBUG getting line information');
+    console.log('DEBUG getting line information version 2');
     const cRec = currentRecord.get();
     getLineItems(cRec, 'item', ['item', 'quantity']);
-
-
 
 });
 
