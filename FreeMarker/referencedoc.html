@@ -1,0 +1,34 @@
+<!-- Freemarker reference doc-->
+<html>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <#assign itnotes></#assign>
+                <#list transaction.item as item>
+                    <#if item.custitem_tripitinerarynotes?has_content>
+                        itnotes += item.custitem_tripitinerarynotes
+                        <#else>
+                            itnotes = "nothing to pull"
+                    </#if>
+                </#list>
+            </td>
+        </tr>
+        <tr>
+            <!-- tests -->
+            <#assign itnotes>
+                <#list transaction.item as item>
+                    <#if item.item.custitem_tripitinerarynotes?has_content>
+                        itnotes += ${item.item.custitem_tripitinerarynotes}<br>
+                    </#if>
+                </#list>
+            </#assign>
+            <!--<td>Itinerary notes field: itnotes</td>-->
+            <td>Itinerary notes field: ${itnotes}</td>
+            <!--<td>Itinerary notes field: {itnotes}</td>-->
+        </tr>
+    </table>
+</body>
+
+</html>
