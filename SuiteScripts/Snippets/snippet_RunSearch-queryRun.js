@@ -80,3 +80,38 @@ let cost;
 */
 
 }); 
+
+
+/* QUERY RUNNING */ 
+ const runQuery = (entityId, strtDate, endDate) => {
+        try {
+            const txnQuery = `SELECT t.id, t.tranid, t.trandate, t.type as txn_type
+            FROM transaction t
+            LEFT JOIN transactionLine tl on t.id = tl.transaction and tl.mainLine = 'F' 
+            WHERE tl.entity = ${entityId}
+            AND t.trandate BETWEEN TO_DATE('${strtDate}', 'MM/DD/YYYY') and TO_DATE('${endDate}', 'MM/DD/YYYY')
+            AND t.type IN ('CustInvc', 'CustCred', 'CustPymt', 'Journal', 'CustDep')`;
+            const queryResults = query.runSuiteQL({
+                query: txnQuery
+                //params: [entityId, strtDate, endDate]
+            });
+            log.debug('DEBUG runQuery', `queryResults ${queryResults} `);
+            const mappedRes = queryResults.asMappedResults();
+            log.debug('DEBUG runQuery', `mappedRes ${mappedRes} // lenght ${mappedRes.length}`);
+            //let iterator = mappedRes.iterator();
+            /*
+            mappedRes.each((result)=>{
+                log.debug('DEBUG query results', `result ${result} // json ${JSON.stringify(result)} `);
+            });
+            */
+           for(let x = 0; x < mappedRes.length; x++){
+            log.debug('DEBUG query results', `result ${mappedRes[x]} // json ${JSON.stringify(mappedRes[x])} `);
+           }
+
+           return mappedRes; 
+
+        } catch (error) {
+            log.error('ERROR runQuery', error);
+        }
+    }
+
