@@ -115,3 +115,31 @@ let cost;
         }
     }
 
+
+/**** running 1.0 ss search */
+var ledSrch = nlapiSearchRecord("customrecord_acs_lead_src_com_rec",null,
+  [
+     ["custrecord_acs_lead_src_emp","anyof","11"], 
+     "AND", 
+     ["isinactive","is","F"]
+  ], 
+  [
+     new nlobjSearchColumn("custrecord_acs_lead_src_emp"), 
+     new nlobjSearchColumn("custrecord_acs_lead_src_com_perc"), 
+     new nlobjSearchColumn("custrecord_acs_lead_src_cat")
+  ]
+  );
+  for (var i = 0; i < ledSrch.length; i++) {
+      var records = ledSrch[i];
+      var columns = records.getAllColumns();
+      console.log('DEBUG', columns); 
+      var emp = records.getValue(columns[0]);
+      console.log('DEBUG', emp); 
+
+      var percent = records.getValue(columns[1]);
+      console.log('DEBUG', percent); 
+
+      var category = records.getValue(columns[2]);
+      console.log('DEBUG', category); 
+
+  }
