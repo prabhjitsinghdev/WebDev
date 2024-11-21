@@ -1,0 +1,134 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+    <head>
+        <macrolist>
+          <macro id="nlheader">
+            <table class="header" style="width: 100%"><tr>
+	<td style="padding-left: 8px;"><#if companyInformation.logoUrl?length != 0><img src="${companyInformation.logoUrl}" style="float: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; width: 80%; height: 80px;" /></#if></td>
+	</tr></table>
+        </macro>
+            <macro id="nlfooter">
+                <table style="width: 100%;border: none;">
+                    <tr style="border: none;">
+                        <td align="center" style="padding: 0;width:33%;border: none;">
+                        </td>
+                        <td align="center" style="padding: 0;width:33%;border: none;">
+                        </td>
+                        <td align="right" style="padding: 0;width:33%;border: none;">
+                            <p style="text-align:right;white-space: nowrap;position:relative;top:-10px">Start Date: <#if JSON?has_content>${JSON.startDate}</#if> - End Date:  <#if JSON?has_content>${JSON.endDate}</#if> </p>
+                        </td>
+                    </tr>
+                </table>
+            </macro>
+        </macrolist>
+        <style type="text/css">
+            *{font-family: sans-serif;}
+            td {
+                padding:.5em;
+                border-right: .5px solid black;
+                border-left: .5px solid black;
+                border-collapse: collapse;
+            }
+            table {
+                font-size:.95em;
+                border: .5px solid black;
+                border-collapse: collapse;
+                display:inline-block;
+                margin-bottom:20px;
+            }
+            tr {
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <#if JSON?has_content>
+        <body height="11in" width="17in" padding-left="0.25in" padding-right="0.25in" padding-top="0.3in" padding-bottom="0in" footer="nlfooter" footer-height="8pt">
+            <table style="width:100%;border:none;margin-bottom:20px;">
+                <tr>
+                    <td style="border:none;"></td>
+                    <td align="center" style="font-size:18pt;border:none;"><b>STATEMENT</b></td>
+                </tr>
+                <tr>
+                    <td style="color:#3b82a1;font-weight:bold;font-size:1.2em;border:none;width:33%;" align="left">
+                        <p style="text-align:left;">
+                            <span style="font-size:12pt">${record.entityid}</span><br />${record.altname} -
+                            SAMPLE STATEMENT REPORT
+                        </p>
+                    </td>
+                    <td style="border:none;">
+                        <table align="center" style="border:1px solid black;font-size:12pt;">
+                            <tr>
+                                <td><b>Total: </b></td>
+                                <td><#if JSON.statementTotal?has_content>${JSON.statementTotal}</#if></td>
+                            </tr>
+                            <tr>
+                                <td><b>Currency:</b></td>
+                                <td> ${record.currency}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Subsidiary:</b></td>
+                                <td>${record.subsidiary}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:#3b82a1;font-weight:bold;font-size:1.2em;border:none;width:33%;" align="left">
+                        <p style="text-align:left;">
+                            <span style="font-size:12pt">${record.subsidiary}</span><br />${record.subsidiary.shippingaddress_text}
+                        </p>
+                    </td>
+                </tr>
+                
+                    <!--<td style="font-size:1.1em;border:none;width:33%" align="right">
+                    </td>-->
+
+            </table>
+            <!-- starting table with customer information -->
+            <table style="width: 100%;border:none;" class="customerheader" >
+                <tr>
+                    <td align="left" style="font-size:12pt;border:none;"><b>Statement Date: </b><#if JSON.endDate?has_content>${JSON.endDate}</#if></td>
+                </tr>
+                <tr>
+                    <!--<th align="center" style="font-weight:bold;font-size:16pt;">Statement</th> -->
+                    <td align="left" style="font-size:12pt;border:none;">
+                        <b>Bill To Address: </b><span style="background-color: rgb(255, 255, 255);">${record.defaultaddress}</span></td>
+                </tr>
+            </table>
+
+            <!-- custom data table -->
+            <table style="width: 100%; margin-top: 20px;font-size:12pt; border:1px solid black;">
+                <tr>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Transaction Date</th>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Transaction ID</th>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Transaction Type</th>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Amount</th>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Payment</th>
+                    <th bgcolor="#a6a6a6" align="center" style="padding: 18px 6px;border:solid;">Balance</th>
+                </tr>
+                <#list JSON.transactionData as txndata>
+                <tr>
+                    <td align="left" style="padding: 14px 6px;">${txndata.trandate}</td>
+                    <td align="left" style="padding: 14px 6px;">${txndata.tranid}</td>
+                    <td align="left" style="padding: 14px 6px;">${txndata.type}</td>
+                    <td align="right" style="padding: 14px 6px;">${txndata.amount}</td>
+                    <td align="right" style="padding: 14px 6px;">${txndata.payment}</td>
+                    <td align="right" style="padding: 14px 6px;">${txndata.balance}</td>
+                </tr>
+                </#list>
+                <tr>
+                    <td style="border:none;"></td>
+                    <td style="border:none;"></td>
+                    <td style="border:none;"></td>
+                    <td align="left" style="border:solid"><b>Amount Total: </b><#if JSON.amountTotal?has_content>${JSON.amountTotal}</#if></td>
+                    <td align="left" style="border:solid"><b>Payment Total: </b><#if JSON.paymentTotal?has_content>${JSON.paymentTotal}</#if></td>
+                    <td align="left" style="border:solid"><b>Total: </b> <#if JSON.statementTotal?has_content>${JSON.statementTotal}</#if></td>
+                </tr>
+            </table>
+        </body>
+    <#else>
+        <body height="11in" width="8.5in" padding-left="0.25in" padding-right="0.25in" padding-top="0.3in" padding-bottom="0in">
+            No content.
+        </body>
+    </#if>
+</pdf>
