@@ -1,3 +1,9 @@
+/* saved search notes 
+
+
+Summary criteria is put in AFTER the standard search criteria is done (if its removing some of the results aka item is a specific one )  therefore the summary can be inaccurate. 
+*/
+
 /* 
 * Different ways to run the saved searches 
 * 
