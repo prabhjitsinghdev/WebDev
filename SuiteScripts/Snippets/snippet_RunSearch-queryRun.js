@@ -162,3 +162,5 @@ var ledSrch = nlapiSearchRecord("customrecord_acs_lead_src_com_rec",null,
 
 //We will push the customFilters into defaultFilters
   defaultFilters.push(customFilters);
+ paramSearch.filters = defaultFilters; 
+//now we can run it 
