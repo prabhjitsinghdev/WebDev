@@ -149,3 +149,16 @@ var ledSrch = nlapiSearchRecord("customrecord_acs_lead_src_com_rec",null,
       console.log('DEBUG', category); 
 
   }
+
+
+  /* loades search we can pull filters and add them */ 
+  const paramSearch = search.load({ id: savedSearchParam }).run();
+  const defaultFilters = paramSearch.filters;
+
+  const customFilters = [];
+
+  //We will add the new filter in customFilters
+  customFilters = ['postingperiod', 'ANYOF', '1'];
+
+//We will push the customFilters into defaultFilters
+  defaultFilters.push(customFilters);
