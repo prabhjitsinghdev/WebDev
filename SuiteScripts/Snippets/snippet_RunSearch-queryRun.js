@@ -153,14 +153,15 @@ var ledSrch = nlapiSearchRecord("customrecord_acs_lead_src_com_rec",null,
 
   /* loades search we can pull filters and add them */ 
   const paramSearch = search.load({ id: savedSearchParam }).run();
-  const defaultFilters = paramSearch.filters;
-
-  const customFilters = [];
-
+  const defaultFilters = paramSearch.filterExpression; //use filterExpression not filters 
+  const customFilters = []; // this isn't necessary you can just push to the default filters 
+  //i.e
+defaultFilters.push("AND")
+defaultFilters.push(['postingperiod', 'ANYOF', '1']);
   //We will add the new filter in customFilters
   customFilters = ['postingperiod', 'ANYOF', '1'];
 
 //We will push the customFilters into defaultFilters
-  defaultFilters.push(customFilters);
- paramSearch.filters = defaultFilters; 
+defaultFilters.push(customFilters);
+ paramSearch.filterExpression = defaultFilters; 
 //now we can run it 
