@@ -19,50 +19,78 @@ define(['N/record', 'N/runtime', 'N/ui/serverWidget'], (record, runtime, serverW
                 const accepRecs = ['lotnumberedassemblyitem'];
                 const secondAccpRec = ['customer']; 
                 if (accepRecs.includes(recType)) {
+
+                    //header?
+                    /*\
+                    const priceQty2FLD = form.getField({ id: 'price1quantity2'});
+                    priceQty2FLD.updateDisplayType({
+                        displayType: serverWidget.FieldDisplayType.DISABLED
+                    });
+                    */
+
                     const lineCnt = newRec.getLineCount({
                         sublistId: 'price1'
                     });
-                    log.debug('DEBUG beforeLoad 1.3', `lineCnt ${lineCnt} -- `);
+                    log.debug('DEBUG beforeLoad 1.3', `-- lineCnt pricelevel ${lineCnt} -- `);
                     for (let x = 0; x < lineCnt; x++) {
-                        //currency
-                        const currencyFld = form.getSublist({
-                            id: 'price1'
-                        }).getField({ id: 'currency' });
-                        currencyFld.updateDisplayType({
-                            displayType: serverWidget.FieldDisplayType.DISABLED
-                        });
                         
-                        //discount 
-                        const discountFld = form.getSublist({
+                        //price_1_
+                        const price1Fld = form.getSublist({
                             id: 'price1'
-                        }).getField({ id: 'discount' });
-                        discountFld.updateDisplayType({
+                        }).getField({ id: 'price_1_' });
+                        price1Fld.updateDisplayType({
+                            displayType: serverWidget.FieldDisplayType.DISABLED
+                        });
+                        //price_2_
+                        const price2Fld = form.getSublist({
+                            id: 'price1'
+                        }).getField({ id: 'price_2_' });
+                        price2Fld.updateDisplayType({
+                            displayType: serverWidget.FieldDisplayType.DISABLED
+                        });
+                        //price_3_
+                        const price3Fld = form.getSublist({
+                            id: 'price1'
+                        }).getField({ id: 'price_3_' });
+                        price3Fld.updateDisplayType({
+                            displayType: serverWidget.FieldDisplayType.DISABLED
+                        });
+                        //price_4_
+                        const price4Fld = form.getSublist({
+                            id: 'price1'
+                        }).getField({ id: 'price_4_' });
+                        price4Fld.updateDisplayType({
+                            displayType: serverWidget.FieldDisplayType.DISABLED
+                        });
+                        //price_5_
+                        const pric5Fld = form.getSublist({
+                            id: 'price1'
+                        }).getField({ id: 'price_5_' });
+                        pric5Fld.updateDisplayType({
                             displayType: serverWidget.FieldDisplayType.DISABLED
                         });
 
-                        //discountdisplay
-                        const discountdisplayFld = form.getSublist({
-                            id: 'price1'
-                        }).getField({ id: 'discountdisplay' });
-                        discountdisplayFld.updateDisplayType({
-                            displayType: serverWidget.FieldDisplayType.DISABLED
-                        });
+                    }
 
-                        //discountdisplay
-                        const pricelevelFld = form.getSublist({
-                            id: 'price1'
-                        }).getField({ id: 'pricelevel' });
-                        pricelevelFld.updateDisplayType({
-                            displayType: serverWidget.FieldDisplayType.DISABLED
-                        });
-                        //price1quantity1_fs_lbl
+                    //this doesn't work below
+                    const lineCntPriceLevels = newRec.getLineCount({
+                        sublistId: 'quantitypricinglevel'
+                    });
+                    log.debug('DEBUG beforeLoad 1.4', `-- lineCntPriceLevels ${lineCntPriceLevels} -- `);
+                    for (let x = 0; x < lineCntPriceLevels; x++) {
                         const testFld = form.getSublist({
-                            id: 'price1'
-                        }).getField({ id: 'price1quantity1_fs_lbl' });
+                            id: 'quantitypricinglevel'
+                        }).getField({ id: 'levelcount' });
                         testFld.updateDisplayType({
                             displayType: serverWidget.FieldDisplayType.DISABLED
                         });
-                        //price1_price_1_1_fs
+
+                        const testFld2 = form.getSublist({
+                            id: 'quantitypricinglevel'
+                        }).getField({ id: 'leveldiscount' });
+                        testFld2.updateDisplayType({
+                            displayType: serverWidget.FieldDisplayType.DISABLED
+                        });
                     }
                     
                 }else if(secondAccpRec.includes(recType)){
