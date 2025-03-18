@@ -100,7 +100,7 @@ define(['N/https', 'N/record', 'N/search', 'N/ui/serverWidget', 'N/task', 'N/run
                 id: 'custpage_customer',
                 label: 'Customer',
                 type: serverWidget.FieldType.SELECT,
-                source: record.Type.CUSTOMER,
+                source: record.Type.CUSTOMER, //with source you can refer to a custom rec/list id as well
             });
             custFld.isMandatory = true;
             
