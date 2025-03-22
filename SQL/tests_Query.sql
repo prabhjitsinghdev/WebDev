@@ -7,3 +7,37 @@ FROM transaction t
  SELECT t.id, t.tranid, FROM TRANSACTION t
  LEFT JOIN transactionLine tl on t.id = tl.transaction and tl.mainLine = 'F' 
 WHERE t.type = 'VendBill' and t.status is IN ('VendBill:A', 'VendBill:D')
+
+
+
+/* deubgging to get all fields from the transaction line */ 
+/* with the query below we can and then we saw these fields 
+"foreignamount"
+"netAmount"
+“foreignpaymentamountused”
+“creditforeignamount” 
+“fxamountlinked”
+*/
+SELECT 
+    tl.*
+FROM 
+    Transaction tr
+INNER JOIN 
+    TransactionLine tl ON tr.id = tl.transaction and tl.mainLine = 'F' 
+WHERE 
+    tr.type = 'CustPymt' and tr.id = 51429050
+
+/* pulling all of those amount fields */
+SELECT 
+    tl.id,
+    tl.foreignamount,
+    tl.netAmount,
+    tl.foreignpaymentamountused,
+    tl.creditforeignamount,
+    tl.fxamountlinked
+FROM 
+    Transaction tr
+INNER JOIN 
+    TransactionLine tl ON tr.id = tl.transaction
+WHERE 
+    tr.type = 'CustPymt' and tr.id = 17029628;
