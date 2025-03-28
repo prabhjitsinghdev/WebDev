@@ -41,3 +41,19 @@ INNER JOIN
     TransactionLine tl ON tr.id = tl.transaction
 WHERE 
     tr.type = 'CustPymt' and tr.id = 17029628;
+
+
+/* *****  TransactionLine **** */
+SELECT 
+    *
+FROM 
+    TransactionLine
+WHERE 
+    TransactionLine.transaction = 51429052
+
+/* ****  NextTransactionLineLink *** */
+/* march 27th */
+/* using this simple sql we can see the linked "next transaction line link" for each line and the amount assoicated 
+* the aount is the correct one 
+*/
+SELECT * FROM NextTransactionLineLink WHERE nextDoc = 17036720
