@@ -61,6 +61,9 @@ require(["N/search", "N/currentRecord", "N/ui/dialog", "N/runtime"], (
       console.log("DEBUG result", `${JSON.stringify(result)}`);
     });
 */
+const searchResultCount = invoiceSearchObj.runPaged().count;
+console.log("invoiceSearchObj result count",searchResultCount);
+  
 const resultsObj = txnSearch.run();
 const resultLen = resultsObj.getRange(0, 2); 
 console.log('DEBUG results leng', `resultLen: ${resultLen.length}`);
