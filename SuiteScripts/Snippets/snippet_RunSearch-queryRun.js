@@ -168,3 +168,74 @@ defaultFilters.push(['postingperiod', 'ANYOF', '1']);
 defaultFilters.push(customFilters);
  paramSearch.filterExpression = defaultFilters; 
 //now we can run it 
+
+/* below are examples of pagenated search */
+ function getAllSearchResults(objSearch) {
+        var stLogTitle = 'getAllSearchResults';
+        try {
+            var arrReturnSearchResults = new Array();
+            var maxResults = 1000;
+            var objResultset = objSearch.run();
+            var intSearchIndex = 0;
+            var arrResultSlice = null;
+            do {
+                arrResultSlice = objResultset.getRange(intSearchIndex, intSearchIndex + maxResults);
+                if (arrResultSlice == null) {
+                    break;
+                }
+                arrReturnSearchResults = arrReturnSearchResults.concat(arrResultSlice);
+                intSearchIndex = arrReturnSearchResults.length;
+            } while (arrResultSlice.length >= maxResults);
+            return arrReturnSearchResults;
+        } catch (error) {
+            log.error(stLogTitle, error.message);
+        }
+    }
+
+//exmaple 2 
+const getInputData = () => {
+        const script = runtime.getCurrentScript();
+        const deploymentId = script.deploymentId;
+        let searchId = '';
+        if (deploymentId === 'customdeploy_ns_acs_sumopratn_search08') {
+            // Scheduled run
+            searchId = script.getParameter({ name: 'custscript_ns_acs_wocompletion_reqr_op' });
+        } else {
+            // One-time full run
+            searchId = script.getParameter({ name: 'custscript_ns_acs_wocompletion_allorder' });
+        }
+        const loadedSearch = search.load({ id: searchId });
+        const results = [];
+        let start = 0;
+        let maxResults = 1000;
+        while (true) {
+            const slice = loadedSearch.run().getRange({ start, end: start + maxResults });
+            if (!slice || slice.length === 0) break;
+            results.push(...slice);
+            start += maxResults;
+            // Optional: log progress
+            log.audit('Fetched Records So Far', results.length);
+        }
+        log.audit('Final Record Count', results.length);
+        return results;
+    };
+
+//example 3
+var objSavedSearch = search.load({
+    id: stSearchId
+});
+var maxResults = 1000;
+var objResultset = objSavedSearch.run();
+var intSearchIndex = 0;
+var arrReturnSearchResults = new Array();
+var arrResultSlice = null;
+do {
+    arrResultSlice = objResultset.getRange(intSearchIndex, intSearchIndex + maxResults);
+    if (arrResultSlice == null) {
+        break;
+    }
+
+    arrReturnSearchResults = arrReturnSearchResults.concat(arrResultSlice);
+    intSearchIndex = arrReturnSearchResults.length;
+}
+while (arrResultSlice.length >= maxResults);
