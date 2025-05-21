@@ -1,43 +1,26 @@
 /**
- * Copyright (c) 2024, Oracle and/or its affiliates.
- * 500 Oracle Parkway Redwood Shores, CA 94065
- * All Rights Reserved.
- *
- * This software is the confidential and proprietary information of
- * NetSuite, Inc. ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with NetSuite.
  *
  * @NApiVersion 2.1
  * @NScriptType Suitelet
  * @NModuleScope Public
  *
  * Version    Date          Author              Remarks
- * 1.00       10-23-2024   Prabhjit Singh       NS_ACS_SL_BulkEmails.js - saving backup before code review
+ * 1.00       10-23-2024   Prabhjit Singh       SL_BulkEmails.js - saving backup before code review 
+ *                                              also uses the companion CS script to run with 
  *
  */
 
 define(['N/https', 'N/record', 'N/search', 'N/ui/serverWidget', 'N/task', 'N/runtime'], (https, record, search, serverWidget, task, runtime) => {
     'use strict';
 
-    /**
-     *
-     * Suitelets are extensions of the SuiteScript API that allow you to build custom NetSuite pages and backend logic.
-     * Suitelets are server-side scripts that operate in a request-response model, and are invoked by HTTP GET or POST
-     * requests to system generated URLs.
-     *
-     * @param context = { request: http.ServerRequest, response: http.ServerResponse }
-     */
     const onRequest = (context) => {
-
         if (context.request.method === https.Method.GET) {
             try {
                 const form = serverWidget.createForm({
                     title: 'Invoice Emailing',
                     hideNavBar: false
                 });
-               //form.clientScriptFileId = 1324117;
+               //form.clientScriptFileId = 1324117; need to add the CS script id here 
                 const userObj = runtime.getCurrentUser();
                 const currUsrId = userObj.id; 
                 populateForm(form, currUsrId);
