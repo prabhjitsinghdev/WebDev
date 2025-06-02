@@ -6,7 +6,8 @@
  *
  *  Version    Date          Author             Remarks
  *  1.00       23-04-2025    Prabhjit Singh     WF_ExcepEmail.js
- *                                              There is code for template usage as well -- this works but in our case it wasn't since bc the exception messages are only available during runtime. 
+ *                                              There is code for template usage as well -- this works but in our case it wasn't since bc the exception messages are only available during runtime.
+ *                                              [ Test out trigger on the UI to make sure the script works in the right context ] 
  *
  */
 
