@@ -40,6 +40,20 @@
         </tr>
     </#if>
     </table>
+
+    <table>
+        <tr>
+            <th>First property</th>
+            <th>Second property</th>
+        </tr>
+        <tr>
+            <#list jsonObj=${record.custbody_test_fld}>
+                <#assign jsonObj?eval>
+                    <td>jsonObj.id</td>
+                    <td>jsonObj.docNum</td>
+            </#list>
+        </tr>
+    </table>
 </body>
 
 </html>
