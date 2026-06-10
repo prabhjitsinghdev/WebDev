@@ -4,7 +4,7 @@
  * @NModuleScope Public
  *
  * Version    Date          Author              Remarks
- * 1.00       05-05-2926    Prabhjit Singh      acs_cs_sl_Companion_JE_Creator.js
+ * 1.00       05-05-2926    Prabhjit Singh      cs_sl_Companion_JE_Creator.js
  * 1.01       19-05-2026    Prabhjit Singh      updating to set reversal date
  * 1.02       25-05-2026    Prabhjit Singh      v3 of script to reload SL 
  *
