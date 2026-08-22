@@ -53,6 +53,48 @@
                     <td>jsonObj.docNum</td>
             </#list>
         </tr>
+                    <!-- for a payload like this: 
+ [{"trandesc":"Vendor: adswer Order: 1091","trandate":"08/13/2026","monthservice":"8/26","amount":62.5},{"trandesc":"Vendor: adswer Order: test 01","trandate":"08/19/2026","monthservice":"8/26","amount":100}] -->
+        <#if record.item?has_content>
+            <#-- Build one collection so invoice lines and related credit memos can be ordered together. -->
+            <#assign relatedCMs = []>
+            <#if record.custbody_ns_related_cm?has_content>
+                <#assign relatedCMs = record.custbody_ns_related_cm?string?eval>
+                <#-- Supports a field that was JSON-encoded twice. Prefer storing a JSON array directly. -->
+                <#if relatedCMs?is_string>
+                    <#assign relatedCMs = relatedCMs?eval>
+                </#if>
+            </#if>
+
+            <#assign displayRows = []>
+            <#list record.item as item>
+            <#-- Sort by YYYYMM. Item rows sort before credit rows in the same month. -->
+            <#assign itemSortKey = "9999990">
+            <#if item.custcol_fw_monthofservice?has_content>
+                <#if item.custcol_fw_monthofservice?is_date>
+                <#assign itemSortKey = item.custcol_fw_monthofservice?string("yyyyMM") + "0">
+                <#elseif item.custcol_fw_monthofservice?string?matches("^[0-9]{1,2}/[0-9]{2}$")>
+                <#assign itemSortKey = item.custcol_fw_monthofservice?string?date("M/yy")?string("yyyyMM") + "0">
+                </#if>
+            </#if>
+            <#assign displayRows = displayRows + [{
+                "sortKey": itemSortKey,
+                "type": "item",
+                "data": item
+            }]>
+            </#list>
+
+            <#list relatedCMs as cm>
+            <#assign creditSortKey = "9999991">
+            <#if cm.monthservice?has_content && cm.monthservice?string?matches("^[0-9]{1,2}/[0-9]{2}$")>
+                <#assign creditSortKey = cm.monthservice?string?date("M/yy")?string("yyyyMM") + "1">
+            </#if>
+            <#assign displayRows = displayRows + [{
+                "sortKey": creditSortKey,
+                "type": "credit",
+                "data": cm
+            }]>
+            </#list>
     </table>
 </body>
 
