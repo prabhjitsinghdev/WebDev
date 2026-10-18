@@ -7,7 +7,7 @@ INNER JOIN
 WHERE tr.id = 2338
 
 
-
+/* 2nd query that works */
 SELECT
     resolved.item_internal_id,
     BUILTIN.DF(resolved.item_internal_id) AS item_name,
